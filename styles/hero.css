@@ -1,0 +1,24 @@
+
+
+.heroContactButtonWiggle {
+    animation: buttonWiggle 10s infinite;
+    animation-delay: 5s;
+}
+
+
+/* animation that controls the "contact us" button wiggling randomy */
+@keyframes buttonWiggle {
+    0% {
+        transform: rotate(0);
+    }
+    1% {
+        transform: rotate(2deg);
+    }
+    2% {
+        transform: rotate(-2deg);
+    }
+    3% {
+        transform: rotate(0);
+    }
+}
+
