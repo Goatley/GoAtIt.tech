@@ -30,7 +30,7 @@ module.exports = {
               //extracts css into different css files
               loader: MiniCssExtractPlugin.loader
             },
-            //for if we want to use css in JS and have the css injected into the <style> tags directly
+            // for if we want to use css in JS and have the css injected into the <style> tags directly
             // {
             //   loader: 'style-loader',
             // },

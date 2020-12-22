@@ -51,7 +51,7 @@
 
 /*type scale for desktop sites is at 1.250*/
 html {
-    font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1800 - 300)));
+    font-size: calc(16px + (20 - 16) * ((100vw - 400px) / (1800 - 400)));
 }
 
 

@@ -27,6 +27,7 @@
     "webpack-cli": "^4.1.0"
   },
   "dependencies": {
+    "gsap": "npm:@gsap/shockingly@^3.5.1",
     "tailwindcss": "^1.9.6"
   }
 }

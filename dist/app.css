@@ -10623,6 +10623,10 @@ video {
   height: 66%;
 }
 
+.h-h-60 {
+  height: 15rem;
+}
+
 .text-xs {
   font-size: 0.75rem;
 }
@@ -21768,7 +21772,7 @@ video {
 /*type scale for desktop sites is at 1.250*/
 
 html {
-  font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1800 - 300)));
+  font-size: calc(16px + (20 - 16) * ((100vw - 400px) / (1800 - 400)));
 }
 
 body {
@@ -31494,6 +31498,10 @@ small, .text_small {
 
   .sm\:h-2\/3 {
     height: 66%;
+  }
+
+  .sm\:h-h-60 {
+    height: 15rem;
   }
 
   .sm\:text-xs {
@@ -52249,6 +52257,10 @@ small, .text_small {
     height: 66%;
   }
 
+  .md\:h-h-60 {
+    height: 15rem;
+  }
+
   .md\:text-xs {
     font-size: 0.75rem;
   }
@@ -73000,6 +73012,10 @@ small, .text_small {
 
   .lg\:h-2\/3 {
     height: 66%;
+  }
+
+  .lg\:h-h-60 {
+    height: 15rem;
   }
 
   .lg\:text-xs {
@@ -93755,6 +93771,10 @@ small, .text_small {
     height: 66%;
   }
 
+  .xl\:h-h-60 {
+    height: 15rem;
+  }
+
   .xl\:text-xs {
     font-size: 0.75rem;
   }
@@ -114506,6 +114526,10 @@ small, .text_small {
 
   .\32xl\:h-2\/3 {
     height: 66%;
+  }
+
+  .\32xl\:h-h-60 {
+    height: 15rem;
   }
 
   .\32xl\:text-xs {

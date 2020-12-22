@@ -1,4 +1,4 @@
-// import './index.css';
+import './index.css';
 import navInit from '../js/navInit';
 import heroInit from '../js/heroInit';
 import getInit from '../js/getInit';
@@ -6,7 +6,6 @@ import getInit from '../js/getInit';
 
 
 navInit();
-console.log('test')
 heroInit();
 getInit();
 
