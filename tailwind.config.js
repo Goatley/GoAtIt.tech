@@ -70,6 +70,9 @@ module.exports = {
       },
       minHeight: {
         '100': '100px' 
+      },
+      spacing: {
+        nav: '80px',
       }
     },
   },

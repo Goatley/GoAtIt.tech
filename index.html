@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1 minimum-scale=1">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1 minimum-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="dist/app.css">
     </head>
@@ -17,14 +17,16 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <nav class='w-full' style='height: 80px;'>
-            <div class='h-full m-auto px-4 md:px-8 flex justify-between'>
-                <div class='h-full flex items-center'>
+        <nav class='w-full navBarContainer h-nav fixed top-0 left-0 bg-white z-20 md:relative'>
+            <div class='h-full m-auto px-4 md:px-8 flex relative justify-between'>
+                <!-- logo holding div -->
+                <div class='h-full w-full md:w-auto flex items-center'>
                     <svg 
-                        class='h-8 md:h-12'
+                        class='w-1/2 m-auto md:m-0'
+                        style='max-height: 3rem;'
                         style='transform: translateY(0px);'
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 703.85 218.73">
-                        <g id="Layer_1" data-name="Layer 1">
+                        <g>
                           <g fill="#575a5e">
                             <path d="M-13.5 136.6h178.39c3.22 0 3.23-5 0-5H-13.5c-3.22 0-3.22 5 0 5z" transform="translate(29.34 -71.75)"/>
                             <path d="M-11.73 132.33l-7.72-7.6c-2.29-2.26-5.83 1.28-3.53 3.54l7.71 7.6c2.3 2.26 5.83-1.28 3.54-3.54zM-28.77 132.07l9.65 12.35c2 2.53 5.49-1 3.53-3.54l-9.64-12.35c-2-2.53-5.5 1-3.54 3.54z" transform="translate(29.34 -71.75)"/>
@@ -53,14 +55,14 @@
                         </g>
                     </svg>                      
                 </div>
-                <!-- for desktop sites - only displays on md or up sizes - visibility: hidden when below medium -->
-                <div class='invisible md:visible md:flex md:items-center'>
+                <!-- for desktop sites - nav options - only displays on md or up sizes - display: none when below medium -->
+                <div class='hidden md:flex md:items-center'>
                     <ul class='list-none flex'>
                         <li class='navOption mx-4'>
                             About Us
                         </li>
                         <li class='mx-4'>
-                            <div id='ContactBtn' class='inline-block relative transition-transform duration-100 ease'>
+                            <div class='navContactBtn inline-block relative transition-transform duration-100 ease'>
                                     <button class='text-red-500 border-2 border-red-500 m-auto px-2 relative z-10' 
                                         type="button"
                                     >
@@ -70,12 +72,50 @@
                         </li>
                     </ul>
                 </div>
-                <div class='visible md:invisible ml-auto'>
-                    <p>test</p>
+                <!-- the nav menu for mobile sites -->
+                <div class='flex items-center absolute h-full z-30 right-0 md:hidden' id='navBtnContainer' style='padding-right: 3%;'>
+                    <!-- first the SVG for the open/close menu, tied to the menuToggle.js file for control -->
+                    <button class='menuToggleBTN rounded-lg m-4 z-30 h-1/2'>
+                        <svg class='h-full' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 436.98 432" aria-labelledby="nav_toggle_BTN_title" role='img'>
+                            <title id='nav_toggle_BTN_title'>Toggle Button for Navigation Menu</title>>
+                            <path id="navBorder" visibility='hidden' d="M503 1v430H73V1h430m1-1H72v432h432V0z" transform="translate(-69.66)"/>
+                            <g id="OpenMenu" fill="none" stroke="#575a5e" stroke-miterlimit="10" stroke-width="10">
+                                <path id='navOpenMid' d="M75.63 215.5h287"/>
+                                <path id='navOpenBot' d="M76.63 341.5h287"/>
+                                <path id='navOpenTop' d="M75.63 90.5h287"/>
+                              </g>
+                              <g id="navGoatGroup" class='invisible'>
+                                <path id='navGoatPath' fill="none" stroke="#575a5e" stroke-miterlimit="10" stroke-width="10" d="M367.74 135.84l11.9 47.23.44 12.47-27.77 192.88h-13.88l-13.89-123.99-55.2 20.66-196.28-6.94 1.08-9.61-13.43 119.88h-10.8L32.94 264.43 5.17 209.32l13.89-55.11-15.43-19.9 9.25-6.12 12.35 12.25h285.43l27.77-55.11-13.89-13.78-41.66 13.78L324.54 44l97.2 55.11 13.89 27.55L416.77 152l-11.4-11.56-12.76-12.03-12.97 54.66"/>
+                                <g id="CloseIcon">
+                                  <path id="DiagTop" fill="none" stroke="#ff4242" stroke-miterlimit="10" stroke-width="4" d="M273.63 261l-144-108"/>
+                                  <path id="DiagBot" fill="none" stroke="#ff4242" stroke-miterlimit="10" stroke-width="4" d="M129.63 261l144-108"/>
+                                </g>
+                              </g>
+                        </svg>
+                    </button>
+                    <!-- the actual side navbar itself                    -->
+                    <div id='navSideMenu' class='fixed top-0 right-0 bg-green-200 w-3/4 max-w-12 h-screen z-20 md:hidden' style='transform: translate(100%, 0)'>
+                        <ul class='list-none w-full h-2/3 justify-center flex flex-col items-center'>
+                            <li class='navOption m-4'>
+                                About Us
+                            </li>
+                            <li class='m-4'>
+                                <div class='navMobileContactBtn inline-block relative transition-transform duration-100 ease'>
+                                        <button class='text-red-500 border-2 border-red-500 m-auto px-2 relative z-10' 
+                                            type="button"
+                                        >
+                                            Contact Us  
+                                        </button>                 
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <!-- the overlay for the nav menu toggle -->
+                <div id='navOverlay' class='fixed inset-0 w-full h-screen bg-gray-500 z-20' style='transform: translate(0, -100vh);'></div>   
             </div>
         </nav>
-        <div class='w-full bg-green-200 relative overflow-x-hidden' id='hero'>
+        <div class='w-full bg-green-200 relative overflow-x-hidden mt-nav md:m-0' id='hero'>
             <div class='w-2/3 m-auto relative z-10'>
                 <div class='w-full relative flex py-32 z-10'>
                     <div class='w-full'>
@@ -542,8 +582,8 @@
                 </div>
             </div>
         </div>
-        <!-- just the overlay -->
-        <div id='contactFormOverlay' class='fixed inset-0 w-full h-full bg-gray-500 z-20' style='transform: translate(0, -100vh);'></div>
+        <!-- just the overlay for contact form -->
+        <div id='contactOverlay' class='fixed inset-0 w-full h-screen bg-gray-500 z-20' style='transform: translate(0, -100vh);'></div>
         <div id='contactForm' class='fixed w-4/5 lg:w-1/2 xl:w-1/3 rounded-lg bg-white p-10 z-30 text-gray-700' style='top: 50%; left: 50%; transform: translate(-50%, 100%); max-width: 480px;'>
             <h4 class='m-0 mb-2'>
                 Connect with GoAt<span class='text-red-500'>IT</span>

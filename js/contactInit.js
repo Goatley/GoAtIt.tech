@@ -6,7 +6,7 @@ export default function contactInit() {
 
     //establish dom elements for the contact form, overlay, and buttons
     var contactForm = document.querySelector('#contactForm');
-    var overlay = document.querySelector('#contactFormOverlay');
+    var overlay = document.querySelector('#contactOverlay');
     var contactOpenBtn = document.querySelector('#contactOpenBtn');
     var contactSubmitBtn = contactForm.querySelector('#contactFormSubmit');
     var contactCloseBtn = contactForm.querySelector('#contactFormClose');
