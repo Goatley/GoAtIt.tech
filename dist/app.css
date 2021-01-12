@@ -59,54 +59,6 @@
 }
 
 
-  .integrationSVG .integrationSVGPath {
-    stroke: #313335;
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-    fill: none;
-  }
-
-.analyticsSVG .analyticsSVGPath {
-    fill: none;
-    stroke-width: 2;
-    stroke: #313335;
-    stroke-miterlimit: 10;
-  }
-
-.analyticsSVG .analyticsThickSVGPath {
-    fill: none;
-    stroke: #313335;
-    stroke-width: 5;
-    stroke-miterlimit: 10;
-  }
-
-.seoSVG .seoSVGPath {
-    fill: none;
-    stroke-width: 2;
-    stroke: #313335;
-    stroke-miterlimit: 10;
-  }
-
-.mobileFirstSVG .mobileFirstSVGPath {
-    fill: none;
-    stroke-width: 2;
-    stroke: #313335;
-    stroke-miterlimit: 10;
-  }
-
-.scalabilitySVG .scalabilitySVGPath {
-    fill: none;
-    stroke: #313335;
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-  }
-
-.trainingSVG .trainingSVGPath {
-    fill: none;
-    stroke: #313335;
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-  }
 .contactContainer {
   height: calc(100vh - 100px);
   width: 80%;

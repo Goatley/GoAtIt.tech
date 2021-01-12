@@ -1,49 +1,109 @@
+import { gsap } from 'gsap';
+
 export default function contactInit() {
-    var isContactOpen = false;
+    //state variable to determine if the contact form is open or not
+    var contactOpen = false;
 
-    //get dom elements
-    var heroContactBtn = document.querySelector('.heroContactButton');
-    var contactBtn = document.querySelector('.contactButton');
-    var contactForm = document.querySelector('.contactFormContainer');
-    var contactFormBG = document.querySelector('.contactFormBgGrey')
+    //establish dom elements for the contact form, overlay, and buttons
+    var contactForm = document.querySelector('#contactForm');
+    var overlay = document.querySelector('#contactFormOverlay');
+    var contactOpenBtn = document.querySelector('#contactOpenBtn');
+    var contactSubmitBtn = contactForm.querySelector('#contactFormSubmit');
+    var contactCloseBtn = contactForm.querySelector('#contactFormClose');
 
+    //establishes the timeline for the opening animation
+    var openFormAni = buildTimeline();
+    var submitHoverAni = buildSubmitHoverTL();
+    var closeHoverAni = buildCloseHoverTL();
 
-    //combining into a single function
-    //yea, if you clicked the 'contact' button again while it was open, it would close the form
-    //but you'll never be able to see if while the form is open, and I can re-use this for the 'X' at the top right corner to close
-    const openContactForm = () => {
-        if (isContactOpen) {
-            return;
-        } else {
-            contactForm.classList.remove('contactHidden');
-            contactFormBG.classList.remove('contactHidden');
-            isContactOpen = true;
+    //establish event listeners
+    contactOpenBtn.addEventListener('click', () => toggleForm());
+    // contactSubmitBtn.addEventListener('click', () => toggleForm());
+    contactCloseBtn.addEventListener('click', () => toggleForm());
+
+    //event listeners to make buttons grow
+    contactSubmitBtn.addEventListener('mouseenter', () => {
+        submitHoverAni.play();
+    })
+    contactSubmitBtn.addEventListener('mouseleave', () => {
+        submitHoverAni.reverse();
+    })
+
+    //close button transitions
+    contactCloseBtn.addEventListener('mouseenter', () => {
+        closeHoverAni.play();
+    })
+    contactCloseBtn.addEventListener('mouseleave', () => {
+        closeHoverAni.reverse();
+    })
+
+    //functions to keep track of state
+    const toggleForm = () => {
+        if (contactOpen) {
+            openFormAni.reverse();
+        } else if (!contactOpen) {
+            openFormAni.play();
         }
+
+        contactOpen = !contactOpen;        
     }
 
-    //checks to see if the form is open, then closes if it is
-    //for clicking on the grey background or the x to close the form
-    const closeContactForm = () => {
-        if (isContactOpen) {
-            contactForm.classList.add('contactHidden');
-            contactFormBG.classList.add('contactHidden');
-            isContactOpen = false;
-        }
+    //builds the animation timeline to show the form
+    function buildTimeline() {
+
+        var tl= gsap.timeline( { paused: true } );
+
+        tl
+            .add('start')
+            .fromTo(contactForm, {
+                y: '100%'
+            },
+            {
+                duration: 0.5,
+                y: '-50%',
+            }, 'start')
+            .fromTo(overlay, {
+                y: '-100vh',
+            }, 
+            {
+                y: 0,
+                duration: 0.01
+            },'start')
+            .fromTo(overlay, {
+                opacity: 0,
+            }, 
+            {
+                duration: 0.5,
+                opacity: 0.5,
+            }, 'start')
+
+        return tl;
     }
 
-    //add the event listeners for the contact buttons to open the form
-    
-    
+    function buildSubmitHoverTL() {
+        var tl = gsap.timeline({paused: true});
 
-    heroContactBtn.addEventListener('click', openContactForm);
-    contactBtn.addEventListener('click', openContactForm);
-    contactFormBG.addEventListener('click', closeContactForm);
-    contactBtn.addEventListener('mouseenter', () => {
-        contactBtn.style.transform = 'scale(1.1)';
-    });
+        tl
+            .to(contactSubmitBtn, {
+                duration: 0.1,
+                scale: 1.1,
+                backgroundColor: '#FF4242',
+                color: '#ffffff'
+            })
 
-    contactBtn.addEventListener('mouseleave', () => {
-        contactBtn.style.transform = 'scale(1)';
-    });
-    
+
+        return tl;
+    }
+
+    function buildCloseHoverTL() {
+        var tl = gsap.timeline({paused: true});
+
+        tl
+            .to(contactCloseBtn, {
+                duration: 0.1,
+                color: '#FF4242'
+            })
+
+        return tl;
+    }
 }

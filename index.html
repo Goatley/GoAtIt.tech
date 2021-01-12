@@ -18,10 +18,10 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <nav class='w-full' style='height: 80px;'>
-            <div class='h-full m-auto px-8 flex justify-between'>
+            <div class='h-full m-auto px-4 md:px-8 flex justify-between'>
                 <div class='h-full flex items-center'>
                     <svg 
-                        height='50px'
+                        class='h-8 md:h-12'
                         style='transform: translateY(0px);'
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 703.85 218.73">
                         <g id="Layer_1" data-name="Layer 1">
@@ -53,7 +53,8 @@
                         </g>
                     </svg>                      
                 </div>
-                <div class='flex items-center'>
+                <!-- for desktop sites - only displays on md or up sizes - visibility: hidden when below medium -->
+                <div class='invisible md:visible md:flex md:items-center'>
                     <ul class='list-none flex'>
                         <li class='navOption mx-4'>
                             About Us
@@ -64,11 +65,13 @@
                                         type="button"
                                     >
                                         Contact Us  
-                                    </button>
-                                    <div class='absolute w-full h-full bg-green-200 top-0 transform translate-y-1 translate-x-1'></div>                    
+                                    </button>                 
                             </div>
                         </li>
                     </ul>
+                </div>
+                <div class='visible md:invisible ml-auto'>
+                    <p>test</p>
                 </div>
             </div>
         </nav>
@@ -300,129 +303,214 @@
                     Every GoAt<span class='text-red-500'>IT</span> website includes:
                 </h2>
             </div>
-            <svg class='w-3/4 m-auto' 
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1243.85 893.35">
-                <g id="MobileFirstGroup">
-                  <ellipse cx="496.63" cy="231.9" fill="#e6efec" rx="189" ry="162" transform="rotate(-18.35 258.612 393.59)"/>
-                  <text fill="#ff4242" font-family="Roboto-Regular, Roboto" font-size="22" transform="translate(337.98 195.77)">
-                    Mobile<tspan x="66.43" y="0" fill="#575a5e"> </tspan><tspan x="71.88" y="0" fill="#313335">First Design</tspan>
-                  </text>
-                  <text fill="#313335" font-family="Roboto-Regular, Roboto" font-size="16" transform="translate(288.68 218.27)">
-                    Mobile d<tspan x="61.3" y="0" letter-spacing="-.01em">e</tspan><tspan x="69.67" y="0">vices ma</tspan><tspan x="133.09" y="0" letter-spacing="-.01em">k</tspan><tspan x="141.05" y="0">e up a little </tspan><tspan x="222.45" y="0" letter-spacing="-.01em">o</tspan><tspan x="231.45" y="0" letter-spacing="-.01em">v</tspan><tspan x="239.1" y="0">er 50% </tspan><tspan x="4.05" y="19.2">of all web t</tspan><tspan x="81.78" y="19.2" letter-spacing="-.02em">r</tspan><tspan x="86.88" y="19.2">affic - </tspan><tspan x="131.29" y="19.2" letter-spacing="-.01em">t</tspan><tspan x="136.36" y="19.2">od</tspan><tspan x="154.51" y="19.2" letter-spacing="-.01em">a</tspan><tspan x="163.09" y="19.2" letter-spacing="-.05em">y</tspan><tspan x="169.83" y="19.2">, mobile </tspan><tspan x="229.26" y="19.2" letter-spacing="-.01em">r</tspan><tspan x="234.52" y="19.2">espon</tspan><tspan x="278.18" y="19.2">-</tspan><tspan x="70.49" y="38.4">si</tspan><tspan x="82.63" y="38.4" letter-spacing="-.01em">v</tspan><tspan x="90.27" y="38.4">e sites a</tspan><tspan x="149.46" y="38.4" letter-spacing="-.01em">r</tspan><tspan x="154.73" y="38.4">e a must</tspan>
-                  </text>
-                  <g fill="none" stroke="#333" stroke-miterlimit="10">
-                    <path d="M479.36 115.79l-.12-.26c-1.92-4.11-5.3-4.65-6.42-4.37s-1 .57-1.61 1.6-.8 9.15-.8 9.15-.06 4.69-.92 6a17 17 0 00-1.44 2.86 53.41 53.41 0 00-2.06 6.7 29 29 0 01-1.49 5s-1.95 7.27-3.5 11-1.5 5.44-1.5 5.44l-.17 3.31s.4 12.82.46 17.28-.29 10-.29 10 0 7.44-1.83 10-6.09 12.59-6.09 12.59l35.05 16.16 3-8.63a18.17 18.17 0 013.62-4.5 34.85 34.85 0 004.86-6l9.64-12.1 3.7-4.93a33.67 33.67 0 002.67-4.85c.69-1.85 2-2.71 3.1-4.89a8.5 8.5 0 001.07-3 1.6 1.6 0 001.12-1.18" transform="translate(-63 -66.73)"/>
-                    <path d="M479.39 155.18c0-3.44 0-7.21-.05-11.15 0-9.29-.08-19.51-.1-28.5 0-13.76 0-24.63.12-24.8.34-.45.69-6 5.62-6.06s34.09-.23 34.09-.23 5.62 1 5.85 6.07c.08 1.7.12 11.59.13 23.94v57.89s.05 5.88-5.66 5.92-34.28.08-34.28.08-5.6-.14-5.63-5.77c0 0 0-6.8-.08-16.47M479.39 156.08v-.89M525.06 125.8s1.31.45 4.54-.42l.28-.08a23.18 23.18 0 006.7-3.66c1.28-.86 1.67-2.13 1.48-4.13s-2.37-3-2.94-3.22a35.8 35.8 0 00-4.53-.16l-5.53.32" transform="translate(-63 -66.73)"/>
-                    <path d="M529.88 125.3a38 38 0 012.7 4c.72 1.39.33 5.55.33 5.55s.09 2.68.12 4.28v1.13c0 .48-.17 1.18-2.57 1.71a4.76 4.76 0 01-2.85-.33 6.66 6.66 0 01-2.56-1.81" transform="translate(-63 -66.73)"/>
-                    <path d="M533.05 139.11s2.83 1.31 3.15 3.26a8.82 8.82 0 010 3.2s-.81 1.52-1.87 4.12-1.28 3.12-1.28 4.06a3.32 3.32 0 01-1.84 3.38c-1.42.78-3.32.22-4.15-.09l-.42-.17a3.1 3.1 0 01-1.58-1.66" transform="translate(-63 -66.73)"/>
-                    <path d="M533.05 153.75s1.63-.54 2.89 1.63a4.86 4.86 0 01.74 3.81c0 .28-1.76 3.72-1.76 3.72s-2.6 3.4-2.85 3.89a4.8 4.8 0 01-2.76 2.28c-1.78.63-4.27-.77-4.27-.77M525 159.19v0a7.92 7.92 0 012-2.13M525.06 144.71a5.14 5.14 0 012.56-3.08" transform="translate(-63 -66.73)"/>
-                    <ellipse cx="439.25" cy="105.65" rx="3.62" ry="3.6"/>
-                    <path d="M419.09 29.26l40.48.15v71.23h-40.48V29.26z"/>
-                    <rect width="14.58" height="1.14" x="431.16" y="22.86" rx=".51" ry=".51"/>
-                    <path d="M479.33 144s-.19 5.57-1.18 6.3a30.16 30.16 0 011.24 4.85h0a3.75 3.75 0 010 .89h0" transform="translate(-63 -66.73)"/>
-                  </g>
-                </g>
-                <g id="TrainingGroup">
-                  <ellipse cx="872.5" cy="237" fill="#e6efec" rx="184.5" ry="162" transform="rotate(-36.41 739.594 299.407)"/>
-                  <g fill="none" stroke="#333" stroke-miterlimit="10">
-                    <path d="M905.23 182.16a12 12 0 01-7.3 2.5h-86.22a12 12 0 01-12-12v-44.52a12 12 0 0112-12h86.22a12 12 0 0112 12v44.52a12 12 0 01-4.7 9.5z" transform="translate(-63 -66.73)"/>
-                    <path d="M887 182.16h-72a12 12 0 01-12-12v-39.53a12 12 0 0112-12h79.7a12 12 0 0112 12v39.53a12 12 0 01-12 12H887z" transform="translate(-63 -66.73)"/>
-                    <path d="M741.67 115.44h-5.95M841.98 115.44h5.94M823.97 115.44l-11.41-10.47.69-1 12.38 11.47 2.69 2.49 41.07 38.05-.52.66-42.19-38.71-2.71-2.49z"/>
-                  </g>
-                  <text fill="#313335" font-family="Roboto-Regular, Roboto" font-size="22" transform="translate(698.21 196.77)">
-                    <tspan letter-spacing="-.04em">T</tspan><tspan x="12.32" y="0" letter-spacing="-.02em">r</tspan><tspan x="19.34" y="0">aining and</tspan><tspan x="120.56" y="0" fill="#575a5e"> </tspan><tspan x="126.01" y="0" fill="#ff4242">Suppo</tspan><tspan x="188.42" y="0" fill="#ff4242" letter-spacing=".02em">r</tspan><tspan x="196.4" y="0" fill="#ff4242">t</tspan>
-                  </text>
-                  <text fill="#313335" font-family="Roboto-Regular, Roboto" font-size="16" transform="translate(662.85 219.27)">
-                    Go<tspan x="20.02" y="0" letter-spacing="-.01em">A</tspan><tspan x="30.33" y="0">t</tspan><tspan x="35.55" y="0" letter-spacing="-.01em">I</tspan><tspan x="39.68" y="0" letter-spacing="-.02em">T</tspan><tspan x="48.91" y="0"> of</tspan><tspan x="67.55" y="0" letter-spacing="-.01em">f</tspan><tspan x="72.92" y="0">ers extensi</tspan><tspan x="150.09" y="0" letter-spacing="-.01em">v</tspan><tspan x="157.74" y="0">e t</tspan><tspan x="175.41" y="0" letter-spacing="-.02em">r</tspan><tspan x="180.51" y="0">aining so </tspan><tspan x="248.91" y="0" letter-spacing="-.01em">y</tspan><tspan x="256.36" y="0">ou </tspan><tspan x=".88" y="19.2">know how </tspan><tspan x="76.85" y="19.2" letter-spacing="-.01em">t</tspan><tspan x="81.92" y="19.2">o use </tspan><tspan x="124.52" y="19.2" letter-spacing="-.01em">y</tspan><tspan x="131.97" y="19.2">our website, in addi</tspan><tspan x="269.01" y="19.2">-</tspan><tspan x="-1.96" y="38.4">tion </tspan><tspan x="29.06" y="38.4" letter-spacing="-.01em">t</tspan><tspan x="34.13" y="38.4">o f</tspan><tspan x="52.77" y="38.4" letter-spacing="-.01em">r</tspan><tspan x="58.04" y="38.4">ee suppo</tspan><tspan x="123.1" y="38.4" letter-spacing=".02em">r</tspan><tspan x="128.9" y="38.4">t for the first 30 d</tspan><tspan x="251.86" y="38.4" letter-spacing="-.01em">a</tspan><tspan x="260.45" y="38.4">ys</tspan>
-                  </text>
-                </g>
-                <g id="AnalyticsGroup">
-                  <ellipse cx="1103.5" cy="504" fill="#e6efec" rx="203.5" ry="162" transform="rotate(-3.72 43.852 1440.374)"/>
-                  <g fill="none" stroke="#313335" stroke-miterlimit="10">
-                    <path d="M1087.33 447.83c19.14 0 28.83 10.6 33.66 22.59a55.77 55.77 0 011.86 5.46 83 83 0 012.49 28.05h-74.66s-8.07-55.82 36.32-56.1" transform="translate(-63 -66.73)"/>
-                    <path d="M1101.76 417.19h4.36a12 12 0 0112 12v6.64a12 12 0 01-12 12h-36.51a12 12 0 01-12-12v-6.64a12 12 0 0112-12h32.15z" transform="translate(-63 -66.73)"/>
-                    <path d="M1008.61 350.46l-3.02-14.86.89-.15 3.07 15.01"/>
-                    <path d="M1067 400.56a1.7 1.7 0 111.69 1.69 1.7 1.7 0 01-1.69-1.69z" transform="translate(-63 -66.73)"/>
-                    <path d="M1038.76 350.46l3.62-17.82-1.07-.18-3.68 18"/>
-                    <path d="M1107.27 397.24a2 2 0 10-2 2 2 2 0 002-2zM1121 470.42s26.26-10.57 24.71-29.78v0M1122.85 475.88s28.47-9.56 28.47-35.26" transform="translate(-63 -66.73)"/>
-                    <path d="M1145.7 440.64c-9.4-1.82-7.53-12.87-7.53-12.87h4.58s-1.46 9.35 5.77 8.8 6-8.8 6-8.8h4.48s1.36 11-7.63 12.84a13.69 13.69 0 01-3 .28 15.06 15.06 0 01-2.67-.25z" transform="translate(-63 -66.73)"/>
-                    <rect width="54.49" height="23.92" x="997.74" y="353.37" rx="10.67" ry="10.67"/>
-                    <path stroke-width="5" d="M1005.59 361.04a5.06 5.06 0 015-4.43 4.38 4.38 0 014.82 4.43M1027.77 361.04a5.07 5.07 0 015-4.43c4.94 0 4.82 4.43 4.82 4.43M1008.52 369.93s1.79 4.66 13.23 4.66 14.46-4.66 14.46-4.66"/>
-                  </g>
-                  <text fill="#313335" font-family="Roboto-Regular, Roboto" font-size="22" transform="translate(948.76 471.77)">
-                    Setup for<tspan x="89.44" y="0" fill="#575a5e"> </tspan><tspan x="94.89" y="0" fill="#ff4242">Analytics</tspan>
-                  </text>
-                  <text fill="#313335" font-family="Roboto-Regular, Roboto" font-size="16" transform="translate(903.5 494.27)">
-                    <tspan letter-spacing="-.01em">K</tspan><tspan x="9.85" y="0">nowledge brings powe</tspan><tspan x="169.52" y="0" letter-spacing="-.06em">r</tspan><tspan x="173.97" y="0">, and analytics </tspan><tspan x="-4.51" y="19.2">can help unlock new heights. </tspan><tspan x="212.39" y="19.2" letter-spacing="-.02em">W</tspan><tspan x="226.34" y="19.2" letter-spacing="-.04em">e</tspan><tspan x="234.2" y="19.2" letter-spacing=".02em">’</tspan><tspan x="237.64" y="19.2">ll help </tspan><tspan x="5.41" y="38.4">get </tspan><tspan x="32.05" y="38.4" letter-spacing="-.01em">y</tspan><tspan x="39.51" y="38.4">ou sta</tspan><tspan x="83.59" y="38.4" letter-spacing=".02em">r</tspan><tspan x="89.4" y="38.4">ted with Google Analytics</tspan>
-                  </text>
-                </g>
-                <g id="IntegrationGroup">
-                  <ellipse cx="867" cy="791" fill="#e6efec" rx="162" ry="180" transform="rotate(-51.91 766.91 822.337)"/>
-                  <g fill="#666">
-                    <path d="M934.39 762.4v1.33s-17.52 9.81-22.25-7.88c-5.27-19.67-25.93-9.77-26.07-9.46a1.44 1.44 0 00-.17-.49 1.42 1.42 0 00-.41-.51s21.6-10.16 27.48 9 21.42 8.01 21.42 8.01zM872.07 721.81c.12 1.07-.44 1.15-.44 1.15-11.71 2.41-20 .28-20 .28l.16-4.5.08.1c1.79 2.32 7.19 2.11 11.31 2.21 3.54.09 7.08-.21 8.86-1.36a10.57 10.57 0 00.03 2.12zM872 727.31c.24.51-.08.79-.71 1.26a.38.38 0 00-.16.43c-8.56 3.25-18.71.49-18.71.49-.25-.21-.56-.41-.76-.6-.48-.43.71-1.18.71-1.18s.76-.76-.2-1.19c0 0 11.3 2.33 19-.44-.49.36.58.71.83 1.23z" transform="translate(-63 -66.73)"/>
-                    <path d="M871.76 729.78a.46.46 0 01.17.44 1.48 1.48 0 01-.61 1.08l-.34.57h-.07c-8.83 3.22-18.23.58-18.42.51-.06-.2-.19-.33-.6-.56-.64-.36.08-1 .71-1.47.37-.25.15-.54-.19-.82 0 0 10.15 2.76 18.71-.49a1.79 1.79 0 00.64.74zM871.75 724c.87.43-.2 1.78-.63 2.13-7.66 2.77-19 .44-19 .44-.95-.44-.35-1-.35-1s1.62-1.15.71-1.62-.87-.67-.87-.67 8.27 2.13 20-.28a.53.53 0 00.14 1z" transform="translate(-63 -66.73)"/>
-                    <path d="M870.91 731.83h.07c-1.08 1.81-4.42 7.3-5.49 7.6-.28.07-5.65.42-6.62-.24-2.19-1.5-6.31-6.51-6.31-6.51 0-.16 0-.28-.07-.38.19.11 9.59 2.75 18.42-.47zM841.16 766.28a1.47 1.47 0 00.44.66c-.25.14-18.52 10-23.34-8-5.39-20.16-27.15-9.62-27.29-9.3v-1.42s22.13-10.41 28.16 9.21 21.93 8.22 21.93 8.22a1.42 1.42 0 00.1.63z" transform="translate(-63 -66.73)"/>
-                  </g>
-                  <g fill="none" stroke="#333" stroke-miterlimit="10">
-                    <path d="M841.06 765.7s-15.9 11.4-21.93-8.22-28.13-9.21-28.13-9.21v1.42c.14-.32 21.9-10.86 27.29 9.3 4.82 18 23.09 8.09 23.34 8h0" transform="translate(-63 -66.73)"/>
-                    <path d="M843.13 764.05s-2 .36-2.07 1.65a1.42 1.42 0 00.1.58 1.47 1.47 0 00.44.66c.91.75 2.52 0 2.52 0M859.52 766.35l-10.63 4.09a2.75 2.75 0 01-3.55-1.57l-.83-2.12-1.08-2.82-1.51-3.88a3 3 0 011.74-3.91l10.36-4c-1-2.13.28-2.87 1.26-.48s4.5 11.16 5.49 14.19c.68 1.87-.33 2.36-1.25.5z" transform="translate(-63 -66.73)"/>
-                    <path d="M796.52 699.62l-5.5-14.2M789.97 689.35l3.18 8.21M788.99 691.16l2.16 5.57M788.25 693.18l.99 2.55"/>
-                    <path d="M886.07 746.39c.14-.31 20.8-10.21 26.07 9.46 4.73 17.69 22.25 7.88 22.25 7.88v-1.33s-15.52 11.14-21.41-8-27.48-9-27.48-9" transform="translate(-63 -66.73)"/>
-                    <path d="M884.11 748.49s2.14-.75 2-2.1a1.44 1.44 0 00-.17-.49 1.42 1.42 0 00-.41-.51c-1-.77-2.75.38-2.75.38M864.38 747.76l12.91-5.76 6.23 13.89-12.91 5.75c1.14 2.08-.12 2.89-1.22.55-.34-.71-.91-1.93-1.58-3.37q-.22-.51-.48-1.05c-.62-1.36-1.3-2.85-1.94-4.27l-.47-1c-.75-1.69-1.4-3.2-1.77-4.15-.77-1.86.21-2.35 1.23-.59z" transform="translate(-63 -66.73)"/>
-                    <path d="M801.38 681.04l2.62 5.84M804 686.88l1.44 3.21M805.44 690.09l2.17 4.83"/>
-                    <path d="M864.92 752.46l-4.66 2.09a.46.46 0 00-.26.58l.09.25a.46.46 0 00.63.27l4.67-2.14M867.33 757.78l-4.5 2.07a.44.44 0 00-.21.59l.09.18a.5.5 0 00.66.24l4.44-2" transform="translate(-63 -66.73)"/>
-                    <path d="M804 686.88l6.24-2.89 1.47 3.23-6.27 2.87"/>
-                    <path d="M877.29 742l.5-.21a.28.28 0 01.35.14l.92 2 3.87 8.52 1.27 2.81a.29.29 0 01-.14.38l-.54.23" transform="translate(-63 -66.73)"/>
-                    <path d="M879.06 744l1.46-.57a1.06 1.06 0 011.38.56l.82 1.83 1.25 2.77.84 1.89a1.11 1.11 0 01-.57 1.48l-1.31.56M851.81 718.74a10.12 10.12 0 01-1.51-5.81 20.19 20.19 0 00-2.14-8c-1.94-3.36-5-7.18-5.16-15.19s6-13.39 6-13.39 6.13-5.9 14.17-5.27a19.84 19.84 0 0118.72 14.76s2.43 10.12-4 16.87c0 0-2.43 3.9-2.65 5.48s-.74 5.38-.74 5.38-.39 3.79-1.73 5.48a2.82 2.82 0 01-.72.64c-1.78 1.15-5.32 1.45-8.86 1.36-4.12-.1-9.52.11-11.31-2.21z" transform="translate(-63 -66.73)"/>
-                    <path d="M852.49 732.34c0 .1 0 .22.07.38 0 0 4.12 5 6.31 6.51 1 .66 6.34.31 6.62.24 1.07-.3 4.41-5.79 5.49-7.6h0l.34-.57a1.48 1.48 0 00.61-1.08.46.46 0 00-.17-.44 1.79 1.79 0 01-.64-.78.38.38 0 01.16-.43c.63-.47 1-.75.71-1.26s-1.31-.87-.87-1.23 1.5-1.7.63-2.13a.53.53 0 01-.12-1s.56-.08.44-1.15a10.57 10.57 0 010-2.12h0" transform="translate(-63 -66.73)"/>
-                    <path d="M851.81 718.74l-.16 4.5s0 .2.87.67-.71 1.62-.71 1.62-.6.55.35 1 .2 1.19.2 1.19-1.19.75-.71 1.18c.2.19.51.39.76.6s.56.57.19.82c-.63.44-1.35 1.11-.71 1.47.41.23.54.36.6.56M851.65 723.24s8.27 2.13 20-.28M852.16 726.52s11.3 2.33 19-.44M852.41 729.49s10.15 2.76 18.71-.49" transform="translate(-63 -66.73)"/>
-                    <path d="M852.49 732.34h0c.19.07 9.59 2.71 18.42-.51M852.68 680.28c-.88 1.67-.95 3.37-.14 3.8s2.18-.59 3.07-2.27.94-3.37.13-3.8-2.18.59-3.06 2.27zM848.8 684.11c-.43 1-1 1.65-1.39 1.5s-.27-1.06.16-2 1-1.66 1.4-1.51.26 1.03-.17 2.01z" transform="translate(-63 -66.73)"/>
-                  </g>
-                  <text fill="#ff4242" font-family="Roboto-Regular, Roboto" font-size="22" transform="translate(705.74 748.77)">
-                    Integ<tspan x="49.31" y="0" letter-spacing="-.02em">r</tspan><tspan x="56.32" y="0">ation</tspan><tspan x="105.5" y="0" fill="#575a5e"> </tspan><tspan x="110.95" y="0" fill="#313335">Suppo</tspan><tspan x="173.36" y="0" fill="#313335" letter-spacing=".02em">r</tspan><tspan x="181.34" y="0" fill="#313335">t</tspan>
-                  </text>
-                  <text fill="#313335" font-family="Roboto-Regular, Roboto" font-size="16" transform="translate(663.88 771.27)">
-                    CMS<tspan x="33.88" y="0" letter-spacing="-.05em">’</tspan><tspan x="36.2" y="0">s, CRM</tspan><tspan x="85.78" y="0" letter-spacing="-.05em">’</tspan><tspan x="88.1" y="0">s, Email API</tspan><tspan x="171.88" y="0" letter-spacing="-.05em">’</tspan><tspan x="174.2" y="0">s, databases - </tspan><tspan x="9.47" y="19.2" letter-spacing="-.01em">y</tspan><tspan x="16.93" y="19.2">ou name it, w</tspan><tspan x="111.06" y="19.2" letter-spacing="-.04em">e</tspan><tspan x="118.91" y="19.2" letter-spacing=".02em">’</tspan><tspan x="122.36" y="19.2">ll help. </tspan><tspan x="176.36" y="19.2" letter-spacing="-.02em">W</tspan><tspan x="190.32" y="19.2">e can help </tspan><tspan x="2.77" y="38.4">integ</tspan><tspan x="38.16" y="38.4" letter-spacing="-.02em">r</tspan><tspan x="43.26" y="38.4">ate all </tspan><tspan x="90.05" y="38.4" letter-spacing="-.01em">y</tspan><tspan x="97.51" y="38.4">our 3</tspan><tspan x="133.81" y="38.4" letter-spacing="-.01em">r</tspan><tspan x="139.08" y="38.4">d pa</tspan><tspan x="169.74" y="38.4" letter-spacing=".02em">r</tspan><tspan x="175.55" y="38.4">ty se</tspan><tspan x="209.03" y="38.4" letter-spacing=".01em">r</tspan><tspan x="214.59" y="38.4">vices </tspan><tspan x="255.28" y="38.4" letter-spacing="-.01em">t</tspan><tspan x="260.35" y="38.4">o </tspan><tspan x="43.01" y="57.6" letter-spacing="-.01em">k</tspan><tspan x="50.96" y="57.6">eep </tspan><tspan x="80.86" y="57.6" letter-spacing="-.01em">y</tspan><tspan x="88.31" y="57.6">our apps connected</tspan>
-                  </text>
-                </g>
-                <g id="SEOGroup">
-                  <ellipse cx="477.5" cy="779" fill="#e6efec" rx="193.5" ry="162" transform="rotate(-24.41 291.712 891.237)"/>
-                  <path fill="#333" d="M537.68 769.74a3.26 3.26 0 01.86 2.15 3.94 3.94 0 01-.86 2.32s-.45 1.78-3.89 3.86a5.28 5.28 0 01-2.72.93 2.17 2.17 0 01-1.9-.93S480.8 730.9 481 729.4a1.47 1.47 0 011.49-1.43 1.08 1.08 0 001.36 0 51.26 51.26 0 004.16-4.09 1.26 1.26 0 00-.41-1.45c1.65-1.64 2.51-.32 2.51-.32s45.63 45.4 47.57 47.63z" transform="translate(-63 -66.73)"/>
-                  <path fill="#b3b3b3" d="M487.55 722.43a1.26 1.26 0 01.41 1.45 51.26 51.26 0 01-4.16 4.12 1.08 1.08 0 01-1.36 0l-8.87-9.38a48.53 48.53 0 005.1-5.14l.32.27z" transform="translate(-63 -66.73)"/>
-                  <path fill="#999" d="M490.06 682.6a47.33 47.33 0 01-11.39 30.85 48.53 48.53 0 01-5.1 5.14 47.6 47.6 0 1116.49-36zm-2.1 0a45.51 45.51 0 10-45.51 45.4A45.44 45.44 0 00488 682.6z" transform="translate(-63 -66.73)"/>
-                  <g fill="none" stroke="#313335" stroke-miterlimit="10">
-                    <path d="M442.28 635a47.59 47.59 0 0136.39 78.48 48.53 48.53 0 01-5.1 5.14A47.69 47.69 0 11442.28 635z" transform="translate(-63 -66.73)"/>
-                    <path d="M488 682.6a45.51 45.51 0 11-45.51-45.38A45.43 45.43 0 01488 682.6z" transform="translate(-63 -66.73)"/>
-                    <path d="M407.35 693.84c0 2.21-.64 4-1.42 4s-1.41-1.8-1.41-4 .63-4 1.41-4 1.42 1.78 1.42 4zM410 703.51c0 1-.47 1.78-1.05 1.78s-1-.8-1-1.78.47-1.79 1-1.79 1.05.8 1.05 1.79zM473.57 718.59l8.87 9.38a1.47 1.47 0 00-1.44 1.43c-.15 1.5 48.22 48.67 48.22 48.67a2.17 2.17 0 001.9.93 5.28 5.28 0 002.72-.93c3.44-2.08 3.89-3.86 3.89-3.86a3.94 3.94 0 00.86-2.32 3.26 3.26 0 00-.86-2.15c-1.94-2.23-47.62-47.63-47.62-47.63s-.86-1.32-2.51.32l-8.6-8.71" transform="translate(-63 -66.73)"/>
-                    <path d="M482.44 728a1.08 1.08 0 001.36 0 51.26 51.26 0 004.16-4.09 1.26 1.26 0 00-.41-1.45" transform="translate(-63 -66.73)"/>
-                  </g>
-                  <text fill="#ff4242" font-family="Roboto-Regular, Roboto" font-size="22" transform="translate(350.94 746.77)">
-                    SEO<tspan x="40.68" y="0" fill="#575a5e"> </tspan><tspan x="46.13" y="0" fill="#313335">Ready</tspan>
-                  </text>
-                  <text fill="#313335" font-family="Roboto-Regular, Roboto" font-size="16" transform="translate(264.24 769.27)">
-                    SEO (sea<tspan x="64.45" y="0" letter-spacing="-.01em">r</tspan><tspan x="69.71" y="0">ch enging optimization) helps </tspan><tspan x="4.84" y="19.2">new cus</tspan><tspan x="63.57" y="19.2" letter-spacing="-.01em">t</tspan><tspan x="68.64" y="19.2">omers find </tspan><tspan x="149.14" y="19.2" letter-spacing="-.01em">y</tspan><tspan x="156.59" y="19.2">ou - our sites a</tspan><tspan x="260.95" y="19.2" letter-spacing="-.01em">r</tspan><tspan x="266.21" y="19.2">e </tspan><tspan x="3.15" y="38.4" letter-spacing="-.01em">r</tspan><tspan x="8.42" y="38.4">eady </tspan><tspan x="46.15" y="38.4" letter-spacing="-.01em">t</tspan><tspan x="51.22" y="38.4">o go for </tspan><tspan x="110.43" y="38.4" letter-spacing="-.01em">y</tspan><tspan x="117.88" y="38.4">ou or an SEO expe</tspan><tspan x="247.18" y="38.4" letter-spacing=".02em">r</tspan><tspan x="252.99" y="38.4">t </tspan><tspan x="262.18" y="38.4" letter-spacing="-.01em">t</tspan><tspan x="267.25" y="38.4">o </tspan><tspan x="60.41" y="57.6">ta</tspan><tspan x="74.34" y="57.6" letter-spacing="-.01em">k</tspan><tspan x="82.29" y="57.6">e it </tspan><tspan x="107.8" y="57.6" letter-spacing="-.01em">t</tspan><tspan x="112.87" y="57.6">o the next l</tspan><tspan x="190.73" y="57.6" letter-spacing="-.01em">ev</tspan><tspan x="206.76" y="57.6">el</tspan>
-                  </text>
-                </g>
-                <g id="ScalabilityGroup">
-                  <ellipse cx="193.5" cy="437.27" fill="#e6efec" rx="193.5" ry="162"/>
-                  <g fill="none" stroke="#333" stroke-miterlimit="10">
-                    <path d="M230.46 412.94l20.25-33.21a1.09 1.09 0 011.89 0l20.25 33.21" transform="translate(-63 -66.73)"/>
-                    <path d="M191.8 346.21h18.05l16.09 26.4M151.36 372.61l16.1-26.4h24.34v26.4M132.75 403.13l18.61-30.52h22.7M215.44 372.61h10.5l18.62 30.52h-.48"/>
-                    <path d="M278.44 469.86h28.64a.88.88 0 01.74.44l15.67 25.7a.87.87 0 01.12.34.85.85 0 010 .42.9.9 0 01-.86.75h-58a.93.93 0 01-.89-1M263.89 470.84a.94.94 0 01.89-1" transform="translate(-63 -66.73)"/>
-                    <path d="M159.36 403.13h14.7M200.89 403.13v27.64h-41.53"/>
-                    <path d="M222.36 469.86v27.64H180.8a1 1 0 01-1-.9 1 1 0 010-.42 1.07 1.07 0 01.15-.41l15.8-25.91z" transform="translate(-63 -66.73)"/>
-                    <path d="M215.44 372.61v30.52H174.06v-30.52H215.44z"/>
-                  </g>
-                  <text fill="#ff4242" font-family="Roboto-Regular, Roboto" font-size="22" transform="translate(100.37 471.77)">
-                    Scalability<tspan x="99.79" y="0" fill="#575a5e"> </tspan><tspan x="105.24" y="0" fill="#313335">in Mind</tspan>
-                  </text>
-                  <text fill="#313335" font-family="Roboto-Regular, Roboto" font-size="16" transform="translate(56.03 494.27)">
-                    As <tspan x="22.65" y="0" letter-spacing="-.01em">y</tspan><tspan x="30.1" y="0">our business g</tspan><tspan x="134.09" y="0" letter-spacing="-.01em">r</tspan><tspan x="139.35" y="0">ows, </tspan><tspan x="175.85" y="0" letter-spacing="-.01em">y</tspan><tspan x="183.3" y="0">our website </tspan><tspan x="-2.55" y="19.2">might need </tspan><tspan x="81.09" y="19.2" letter-spacing="-.01em">t</tspan><tspan x="86.16" y="19.2">o as well - and w</tspan><tspan x="203.3" y="19.2" letter-spacing="-.04em">e</tspan><tspan x="211.16" y="19.2" letter-spacing=".02em">’</tspan><tspan x="214.6" y="19.2">ll futu</tspan><tspan x="254.75" y="19.2" letter-spacing="-.01em">r</tspan><tspan x="260.02" y="19.2">e </tspan><tspan x="33.3" y="38.4">p</tspan><tspan x="42.27" y="38.4" letter-spacing="-.01em">r</tspan><tspan x="47.53" y="38.4">oof </tspan><tspan x="75.3" y="38.4" letter-spacing="-.01em">y</tspan><tspan x="82.75" y="38.4">our website </tspan><tspan x="169.34" y="38.4" letter-spacing="-.01em">t</tspan><tspan x="174.41" y="38.4">o match</tspan>
-                  </text>
-                </g>
-              </svg>                                         
+            <div class='w-full max-w-3xl flex flex-col md:flex-row items-center justify-center mx-auto'>
+                <div class='w-full p-4 md:w-2/3 relative flex justify-center overflow-y-hidden'>
+                    <svg class='w-full max-w-screen-sm' xmlns="http://www.w3.org/2000/svg" id='include_screen_background' aria-labelledby="include-background-title" viewBox="0 0 449.33 449.33">
+                        <path fill="#f2f7f6" d="M15 15h434.33v434.33H15z"/>
+                        <path fill="none" stroke="#d1e3dd" stroke-miterlimit="10" stroke-width="4" d="M2 2h434.33v434.33H2z"/>
+                    </svg>
+                    <!-- mobile first -->
+                    <div class='includeItem absolute w-full h-full'>
+                        <svg class='absolute w-1/2 includeSVG' style='top: 7%; left: 50%; transform: translate(-50%, 0%); max-width: 480px;' xmlns="http://www.w3.org/2000/svg" id="mobile_first_svg" aria-labelledby="mobile_first_title" role='img' viewBox="0 0 181 181">
+                            <title id='mobile_first-title'>Mobile First Functionality</title>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M280.49 159.67a3.09 3.09 0 00-.14-.32c-2.4-5.13-6.62-5.81-8-5.46s-1.22.71-2 2-1 11.41-1 11.41-.07 5.86-1.15 7.5a20.86 20.86 0 00-1.79 3.57 64.76 64.76 0 00-2.58 8.34c-1.36 5.43-1.86 6.28-1.86 6.28s-2.44 9.07-4.38 13.78-1.86 6.78-1.86 6.78l-.22 4.14s.5 16 .58 21.55-.36 12.49-.36 12.49 0 9.27-2.3 12.41-7.6 15.7-7.6 15.7L289.58 300l3.71-10.76a22.85 22.85 0 014.52-5.62c2.64-2.19 6.08-7.49 6.08-7.49l12-15.09 4.63-6.16a41.36 41.36 0 003.33-6c.86-2.31 2.53-3.38 3.87-6.11s1.35-3.69 1.35-3.69a2 2 0 001.39-1.48" transform="translate(-209 -119)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M280.46 194.89c0-11.58-.09-24.33-.11-35.54 0-17.17 0-30.73.14-30.94.43-.57.87-7.42 7-7.56s42.59-.29 42.59-.29 7 1.29 7.31 7.57c.1 2.12.15 14.46.17 29.86v72.19s.07 7.34-7.07 7.39-42.83.11-42.83.11-7-.18-7-7.21c0 0-.05-8.47-.11-20.53" transform="translate(-209 -119)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M280.53 209.92v-1.12c0-4.29 0-9-.07-13.91" transform="translate(-209 -119)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M337.6 172.16s1.64.55 5.67-.54l.35-.1c3.86-1.13 6.83-3.52 8.38-4.55s2.08-2.66 1.84-5.16-2.95-3.75-3.67-4a43.39 43.39 0 00-5.66-.2l-6.91.39" transform="translate(-209 -119)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M343.62 171.52a48.74 48.74 0 013.38 5c.89 1.73.41 6.92.41 6.92s.11 3.34.15 5.34v1.41c0 .61-.21 1.48-3.21 2.14a6.09 6.09 0 01-3.57-.41 8.12 8.12 0 01-3.19-2.27" transform="translate(-209 -119)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M347.58 188.75s3.54 1.64 3.93 4.07a10.64 10.64 0 010 4s-1 1.89-2.33 5.14-1.6 3.89-1.6 5.07a4.13 4.13 0 01-2.3 4.21c-1.78 1-4.15.28-5.19-.11-.32-.12-.51-.21-.51-.21a3.87 3.87 0 01-2-2.07" transform="translate(-209 -119)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M347.58 207s2-.68 3.61 2a6 6 0 01.93 4.75c0 .35-2.2 4.64-2.2 4.64s-3.25 4.24-3.57 4.85a6 6 0 01-3.44 2.85c-2.22.79-5.33-1-5.33-1" transform="translate(-209 -119)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M337.58 213.8a.08.08 0 010 0 9.83 9.83 0 012.5-2.65" transform="translate(-209 -119)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M337.6 195.74a6.46 6.46 0 013.19-3.85" transform="translate(-209 -119)"/>
+                            <ellipse cx="100.1" cy="111.24" fill="none" stroke="#333" stroke-miterlimit="10" rx="4.52" ry="4.5"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M74.91 15.97l50.57.19V105H74.91V15.97z"/>
+                            <rect width="18.21" height="1.43" x="89.99" y="7.99" fill="none" stroke="#333" stroke-miterlimit="10" rx=".51" ry=".51"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M280.46 194.89h0c0 .24-.26 7-1.47 7.86a37.63 37.63 0 011.54 6.05 4.16 4.16 0 010 1.12h0" transform="translate(-209 -119)"/>
+                            <path fill="none" visibility='hidden' stroke="#333" stroke-miterlimit="10" d="M.5.5h180v180H.5z"/>
+                        </svg>
+                        <div class='absolute w-1/2 text-center z-10 includeDesc' style='top: 53%; left: 50%; transform: translate(-50%, 0%);'>
+                            <h5 class='mb-2'>
+                                <span class='text-red-500'>Mobile</span> First Design
+                            </h5>
+                            <p class='leading-4'>
+                                Mobile devices make up a little over 50% of all web traffic - today, mobile responsive sites are a must
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Scalability in Mind -->
+                    <div class='includeItem absolute w-full h-full opacity-0'>
+                        <svg class='absolute w-1/2 includeSVG' style='top: 7%; left: 50%; transform: translate(-50%, 0%); max-width: 480px;' xmlns="http://www.w3.org/2000/svg" id="scalability_svg" data-name="scalability" aria-labelledby="scalability_title" role='img' viewBox="0 0 181 181">
+                            <title id='scalability_title'>Scalability in Mind</title>
+                            <path fill="none" visibility='hidden' stroke="#333" stroke-miterlimit="10" d="M.5.5h180v180H.5z"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M295 209.46l22.77-37.39a1.22 1.22 0 012.13 0l22.77 37.39" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M93.37 59.46h20.3l18.1 29.73"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M47.9 89.19L66 59.46h27.37v29.73"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M26.96 123.56L47.9 89.19h25.52"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M119.97 89.19h11.8l20.94 34.37h-.54"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M349 273.56h32.2a1 1 0 01.83.49l17.6 28.95a1.44 1.44 0 01.13.31 1 1 0 010 .55 1 1 0 01-1 .84H333.6a1 1 0 01-1-1.09" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M332.6 274.66a1.05 1.05 0 011-1.1" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M56.89 123.56h16.53"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M103.6 123.56v31.12H56.89"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M285.89 273.56v31.12h-46.74a1.16 1.16 0 01-1.11-1 1.1 1.1 0 010-.57 1 1 0 01.15-.4L256 273.56z" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M119.97 89.19v34.37H73.42V89.19h46.55z"/>
+                        </svg>
+                        <div class='absolute w-1/2 text-center z-10 includeDesc' style='top: 53%;; left: 50%; transform: translate(-50%, 0%);'>
+                            <h5 class='mb-2'>
+                                <span class='text-red-500'>Scalability</span> In Mind
+                            </h5>
+                            <p class='leading-4'>
+                                As your business grows, your website might need to as well - and we’ll future proof your website to match
+                            </p>
+                        </div>
+                    </div>
+                    <!-- SEO Ready -->
+                    <div class='includeItem absolute w-full h-full opacity-0'>
+                        <svg class='absolute w-1/2 includeSVG' style='top: 7%; left: 50%; transform: translate(-50%, 0%); max-width: 480px;' xmlns="http://www.w3.org/2000/svg" id="seo_ready_svg" aria-labelledby="seo_ready_title" role='img' viewBox="0 0 181 181">
+                            <title id='seo_ready_title'>SEO Ready Websites</title>
+                            <path fill="none" visibility='hidden' stroke="#333" stroke-miterlimit="10" d="M.5.5h180v180H.5z"/>
+                            <path fill="#b3b3b3" d="M341.55 257.37A1.41 1.41 0 01342 259a57.67 57.67 0 01-4.6 4.61 1.19 1.19 0 01-1.51 0l-9.82-10.55a55.07 55.07 0 005.65-5.78l.35.3z" transform="translate(-229 -150)"/>
+                            <path fill="#333" d="M335.89 263.61a1.19 1.19 0 001.51 0A57.67 57.67 0 00342 259a1.41 1.41 0 00-.45-1.63c1.82-1.84 2.77-.36 2.77-.36s50.57 51.06 52.72 53.57a3.66 3.66 0 011 2.42 4.43 4.43 0 01-1 2.61s-.49 2-4.29 4.35a5.89 5.89 0 01-3 1 2.41 2.41 0 01-2.11-1s-53.55-53.07-53.38-54.74a1.62 1.62 0 011.63-1.61z" transform="translate(-229 -150)"/>
+                            <path fill="#999" d="M344.32 212.57a53.84 53.84 0 01-12.6 34.71 55.07 55.07 0 01-5.65 5.78 52.31 52.31 0 01-34.64 13.08c-29.21 0-52.89-24-52.89-53.57S262.22 159 291.43 159s52.89 24 52.89 53.57zm-2.32 0c0-28.19-22.55-51-50.38-51s-50.39 22.85-50.39 51 22.56 51 50.39 51 50.38-22.81 50.38-51z" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M291.43 159c29.21 0 52.89 24 52.89 53.57a53.84 53.84 0 01-12.6 34.71 55.07 55.07 0 01-5.65 5.78 52.31 52.31 0 01-34.64 13.08c-29.21 0-52.89-24-52.89-53.57S262.22 159 291.43 159z" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M342 212.57c0 28.19-22.55 51-50.38 51s-50.39-22.85-50.39-51 22.56-51 50.39-51 50.38 22.81 50.38 51z" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M252.75 225.21c0 2.49-.7 4.52-1.56 4.52s-1.57-2-1.57-4.52.7-4.52 1.57-4.52 1.56 2.02 1.56 4.52z" transform="translate(-229 -150)"/>
+                            <ellipse cx="25.57" cy="86.09" fill="none" stroke="#313335" stroke-miterlimit="10" rx="1.16" ry="2.01"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M326.07 253.06l9.82 10.55a1.62 1.62 0 00-1.65 1.61c-.17 1.67 53.38 54.74 53.38 54.74a2.41 2.41 0 002.11 1 5.89 5.89 0 003-1c3.8-2.34 4.29-4.35 4.29-4.35a4.43 4.43 0 001-2.61 3.66 3.66 0 00-1-2.42c-2.15-2.51-52.72-53.57-52.72-53.57s-.95-1.48-2.77.36l-9.48-9.79" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M335.89 263.61a1.19 1.19 0 001.51 0A57.67 57.67 0 00342 259a1.41 1.41 0 00-.45-1.63" transform="translate(-229 -150)"/>
+                        </svg>
+                        <div class='absolute w-1/2 text-center z-10 includeDesc' style='top: 53%;; left: 50%; transform: translate(-50%, 0%);'>
+                            <h5 class='mb-2'>
+                                <span class='text-red-500'>SEO</span> Ready
+                            </h5>
+                            <p class='leading-4'>
+                                SEO (search enging optimization) helps new customers find you - our sites are ready to go for you or an SEO expert to take it to the next level
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Training and Support -->
+                    <div class='includeItem absolute w-full h-full opacity-0'>
+                        <svg class='absolute w-1/2 includeSVG' style='top: 7%; left: 50%; transform: translate(-50%, 0%); max-width: 480px;' xmlns="http://www.w3.org/2000/svg" id="support_svg" aria-labelledby="support_svg_title" role='img' viewBox="0 0 181 181">
+                            <title id='support_svg_title'>Support and Training for Websites</title>
+                            <path fill="none" visibility='hidden' stroke="#333" stroke-miterlimit="10" d="M.5.5h180v180H.5z"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M367.48 268.32a11.94 11.94 0 01-7.69 2.8h-100a12 12 0 01-12-12V206a12 12 0 0112-12h100a12 12 0 0112 12v53.09a12 12 0 01-4.31 9.23z" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M346 268.32h-82.5a12 12 0 01-12-12v-47.48a12 12 0 0112-12h92.67a12 12 0 0112 12v47.48a12 12 0 01-12 12H346z" transform="translate(-229 -150)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M24.37 118.32H17.68"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M137.22 118.32H143.91"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M116.96 118.32l-12.83-11.78.78-1.12 13.92 12.9 3.02 2.8 46.21 42.81-.58.75-47.46-43.56-3.06-2.8z"/>
+                        </svg>
+                        <div class='absolute w-1/2 text-center z-10 includeDesc' style='top: 53%;; left: 50%; transform: translate(-50%, 0%);'>
+                            <h5 class='mb-2'>
+                                Training and <span class='text-red-500'>Support</span>
+                            </h5>
+                            <p class='leading-4'>
+                                GoAtIT offers extensive training so you know how to use your website, with support included for the first 30 days 
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Setup for Analytics -->
+                    <div class='includeItem absolute w-full h-full opacity-0'>
+                        <svg class='absolute w-1/2 includeSVG' style='top: 7%; left: 50%; transform: translate(-50%, 0%); max-width: 480px;' xmlns="http://www.w3.org/2000/svg" id="analytics_svg" aria-labelledby="analytics_svg_title" role='img' viewBox="0 0 181 181">
+                            <title id='analytics_svg_title'>Websites setup for Analytics</title>
+                            <path fill="none" visibility='hidden' stroke="#333" stroke-miterlimit="10" d="M.5.5h180v180H.5z"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M351.21 282.2c6 20.86 3.71 41.73 3.71 41.73H243.85s-12-83 54-83.45c28.8-.18 43.33 15.67 50.55 33.6a82.71 82.71 0 012.81 8.12z" transform="translate(-234 -153)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M319.83 194.9h12.35a12 12 0 0112 12v21.58a12 12 0 01-12 12h-66a12 12 0 01-12-12V206.9a12 12 0 0112-12h53.67z" transform="translate(-234 -153)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M40.99 41.9l-4.5-22.11 1.34-.22 4.55 22.33"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M268.16 170.15a2.52 2.52 0 112.52 2.52 2.52 2.52 0 01-2.52-2.52z" transform="translate(-234 -153)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M85.83 41.9l5.4-26.52-1.6-.27-5.46 26.79"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M328 165.22a3 3 0 10-3 3 3 3 0 003-3z" transform="translate(-234 -153)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M348.44 274.08s39.07-15.73 36.77-44.31h0" transform="translate(-234 -153)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M351.21 282.2s42.36-14.21 42.36-52.46" transform="translate(-234 -153)"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" d="M385.21 229.77c-14-2.7-11.21-19.13-11.21-19.13h6.81s-2.17 13.91 8.59 13.08 8.92-13.08 8.92-13.08h6.59s2 16.3-11.34 19.1a20.3 20.3 0 01-4.45.41 21.16 21.16 0 01-3.91-.38z" transform="translate(-234 -153)"/>
+                            <rect width="81.05" height="35.58" x="24.82" y="46.22" fill="none" stroke="#313335" stroke-miterlimit="10" rx="10.67" ry="10.67"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" stroke-width="5" d="M36.49 57.64s.82-6.57 7.51-6.6c7.33 0 7.17 6.6 7.17 6.6"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" stroke-width="5" d="M69.49 57.64s.81-6.57 7.5-6.6c7.34 0 7.17 6.6 7.17 6.6"/>
+                            <path fill="none" stroke="#313335" stroke-miterlimit="10" stroke-width="5" d="M40.85 70.86s2.67 6.93 19.68 6.93 21.52-6.93 21.52-6.93"/>
+                        </svg>
+                        <div class='absolute w-1/2 text-center z-10 includeDesc' style='top: 53%;; left: 50%; transform: translate(-50%, 0%);'>
+                            <h5 class='mb-2'>
+                                Setup for <span class='text-red-500'>Analytics</span>
+                            </h5>
+                            <p class='leading-4'>
+                                Knowledge brings power, and analytics can help unlock  new heights.  We’ll help get you started with Google Analytics  
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Integration Capable -->
+                    <div class='includeItem absolute w-full h-full opacity-0'>
+                        <svg class='absolute w-1/2 includeSVG' style='top: 7%; left: 50%; transform: translate(-50%, 0%); max-width: 480px;' xmlns="http://www.w3.org/2000/svg" id="integration_svg" aria-labelledby="integration_svg_title" role='img' viewBox="0 0 181 181">
+                            <title id='integration_svg_title'>Integration Support for External Systems</title>
+                            <path fill="none" stroke="#333" visibility='hidden' stroke-miterlimit="10" d="M.5.5h180v180H.5z"/>
+                            <path fill="#666" d="M395.56 303v1.5s-19.73 11.06-25.06-8.88c-5.93-22.19-29.19-11-29.34-10.67a1.65 1.65 0 00-.18-.56 1.69 1.69 0 00-.47-.57s24.32-11.45 30.95 10.15 24.1 9.03 24.1 9.03z" transform="translate(-224 -153)"/>
+                            <path fill="#666" d="M325.3 263.45c.27.58-.09.89-.8 1.43a.4.4 0 00-.18.47c-9.63 3.68-21.07.55-21.07.55-.28-.23-.63-.46-.85-.67-.54-.49.8-1.34.8-1.34s.85-.84-.22-1.33c0 0 12.72 2.63 21.34-.49-.49.4.68.8.98 1.38z" transform="translate(-224 -153)"/>
+                            <path fill="#666" d="M325 259.66c1 .49-.22 2-.71 2.41-8.62 3.12-21.34.49-21.34.49-1.07-.49-.41-1.12-.41-1.12s1.83-1.29.81-1.83-1-.75-1-.75 9.31 2.4 22.5-.32a.6.6 0 00.15 1.12z" transform="translate(-224 -153)"/>
+                            <path fill="#666" d="M324.54 268l-.38.65-.08-.05c-9.94 3.62-20.52.65-20.74.58-.07-.22-.21-.37-.68-.63-.71-.4.09-1.16.81-1.65.41-.29.17-.61-.22-.94 0 0 11.44 3.13 21.07-.55a2.05 2.05 0 00.72.88.54.54 0 01.19.51 1.69 1.69 0 01-.69 1.2z" transform="translate(-224 -153)"/>
+                            <path fill="#666" d="M324.08 268.55l.08.05c-1.21 2-5 8.23-6.18 8.56-.31.08-6.36.48-7.46-.27-2.46-1.68-7.1-7.33-7.1-7.33a2.78 2.78 0 00-.08-.43c.22.07 10.8 3.04 20.74-.58z" transform="translate(-224 -153)"/>
+                            <path fill="#666" d="M302.4 258.86l.18-5.07.08.1c2 2.62 8.1 2.38 12.74 2.5 4 .1 8-.23 10-1.54a12.53 12.53 0 000 2.4c.13 1.21-.49 1.29-.49 1.29-13.2 2.72-22.51.32-22.51.32z" transform="translate(-224 -153)"/>
+                            <path fill="#666" d="M290.47 306.74a1.63 1.63 0 00.11.66 1.66 1.66 0 00.51.74c-.29.16-20.87 11.32-26.29-9-6.07-22.74-30.56-10.85-30.73-10.49v-1.61s24.92-11.73 31.71 10.4 24.69 9.26 24.69 9.26z" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M290.47 306.74s-17.9 12.87-24.69-9.26-31.71-10.4-31.71-10.4v1.61c.17-.36 24.66-12.25 30.73 10.49 5.42 20.28 26 9.12 26.29 9h0" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M292.8 304.88s-2.27.41-2.33 1.86a1.63 1.63 0 00.11.66 1.66 1.66 0 00.51.74c1 .85 2.83 0 2.83 0" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M311.26 307.48l-12 4.61a3.1 3.1 0 01-4-1.77l-.93-2.39-1.22-3.18-1.7-4.38a3.41 3.41 0 012-4.4l11.67-4.5c-1.16-2.41.32-3.25 1.41-.55s5.07 12.59 6.19 16c.75 2.08-.39 2.66-1.42.56z" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M87.26 154.48l-6.19-16.01"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M79.89 142.89l3.58 9.26"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M78.78 144.94l2.43 6.28"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M77.95 147.21l1.11 2.89"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M341.16 285c.15-.35 23.41-11.52 29.34 10.67 5.33 19.94 25.06 8.88 25.06 8.88V303s-17.47 12.56-24.1-9-30.95-10.15-30.95-10.15" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M339 287.33s2.4-.84 2.2-2.36a1.65 1.65 0 00-.18-.56 1.69 1.69 0 00-.47-.57c-1.15-.87-3.1.43-3.1.43" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M316.73 286.52l14.54-6.52 7 15.66-14.53 6.49c1.28 2.34-.14 3.26-1.38.62-.38-.8-1-2.17-1.77-3.81-.18-.38-.36-.77-.54-1.18-.71-1.53-1.47-3.21-2.19-4.81l-.53-1.19c-.85-1.91-1.58-3.6-2-4.67-.85-2.03.25-2.64 1.4-.59z" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M92.73 133.52l2.95 6.59"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M95.68 140.11l1.63 3.62"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M97.31 143.73l2.44 5.45"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M317.34 291.81l-5.25 2.35a.54.54 0 00-.29.67l.1.27a.52.52 0 00.72.31l5.25-2.41" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M320.06 297.81l-5.06 2.34a.49.49 0 00-.23.66l.1.21a.58.58 0 00.75.27l5-2.3" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M95.68 140.11l7.02-3.26 1.66 3.64-7.05 3.24"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M331.27 280l.56-.23a.29.29 0 01.39.15l1 2.28 4.35 9.61 1.44 3.17a.31.31 0 01-.16.42l-.61.26" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M333.26 282.23l1.65-.65a1.21 1.21 0 011.55.63l.93 2.07 1.4 3.12.95 2.14a1.24 1.24 0 01-.65 1.66l-1.47.64" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M302.58 253.79c-1.93-2.62-1.7-6.55-1.7-6.55a22.94 22.94 0 00-2.41-9c-2.19-3.78-5.69-8.09-5.81-17.13s6.79-15.1 6.79-15.1 6.91-6.66 15.95-5.94c0 0 16-.36 21.08 16.64 0 0 2.73 11.41-4.53 19 0 0-2.74 4.4-3 6.19s-.84 6.06-.84 6.06-.44 4.28-1.95 6.18a3.16 3.16 0 01-.81.72c-2 1.31-6 1.64-10 1.54-4.64-.12-10.71.12-12.74-2.5z" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M303.34 269.13a2.78 2.78 0 01.08.43s4.64 5.65 7.1 7.33c1.1.75 7.15.35 7.46.27 1.2-.33 5-6.52 6.18-8.56l.38-.65a1.69 1.69 0 00.69-1.21.54.54 0 00-.19-.51 2.05 2.05 0 01-.72-.88.4.4 0 01.18-.47c.71-.54 1.07-.85.8-1.43s-1.47-1-1-1.38 1.69-1.92.71-2.41a.6.6 0 01-.13-1.12s.62-.08.49-1.29a12.53 12.53 0 010-2.4h0" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M302.58 253.79l-.18 5.07s0 .22 1 .75-.81 1.83-.81 1.83-.66.63.41 1.12.22 1.33.22 1.33-1.34.85-.8 1.34c.22.21.57.44.85.67s.63.65.22.94c-.72.49-1.52 1.25-.81 1.65.47.26.61.41.68.63" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M302.4 258.86s9.31 2.4 22.5-.32" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M303 262.56s12.72 2.63 21.34-.49" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M303.25 265.9s11.44 3.13 21.07-.55" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M303.34 269.12h0c.22.07 10.8 3 20.74-.58" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M303.56 210.4c-1 1.89-1.07 3.81-.16 4.29s2.46-.66 3.45-2.55 1.07-3.81.16-4.29-2.46.67-3.45 2.55z" transform="translate(-224 -153)"/>
+                            <path fill="none" stroke="#333" stroke-miterlimit="10" d="M299.19 214.73c-.48 1.1-1.19 1.86-1.57 1.7s-.3-1.21.18-2.31 1.19-1.87 1.58-1.7.3 1.2-.19 2.31z" transform="translate(-224 -153)"/>
+                        </svg>
+                        <div class='absolute w-1/2 text-center z-10 includeDesc' style='top: 53%;; left: 50%; transform: translate(-50%, 0%);'>
+                            <h5 class='mb-2'>
+                                <span class='text-red-500'>Integration</span> Capable
+                            </h5>
+                            <p class='leading-4'>
+                                CMS’s, CRM’s, Email API’s, databases - you name it, we’ll help.  We can help integrate all your 3rd party services to keep your apps connected 
+                            </p>
+                        </div> 
+                    </div>   
+                    <!-- end                   -->
+                </div>
+                <div class='w-3/4 md:w-1/3 p-4 flex items-center justify-center text-gray-700 text-center lg:text-left' >
+                    <ul>
+                        <li>
+                            <button id='btn_mobileFirst' class='includeBtn p-1 text-red-500'>Mobile First Design</button>
+                        </li>
+                        <li>
+                            <button id='btn_scalability' class='includeBtn p-1'>Scalability in Mind</button>
+                        </li>
+                        <li>
+                            <button id='btn_SEO' class='includeBtn p-1'>SEO Ready</button>
+                        </li>
+                        <li>
+                            <button id='btn_support' class='includeBtn p-1'>Training and Support</button>
+                        </li>
+                        <li>
+                            <button id='btn_analytics' class='includeBtn p-1'>Prepared for Analytics</button>
+                        </li>
+                        <li>
+                            <button id='btn_integration' class='includeBtn p-1'>Integration Capable</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>                                      
         </div>
-        <div class='w-full bg-green-200' id='contact'>
+        <div class='w-full bg-green-200 text-gray-700' id='contact'>
             <div class='w-4/5 container m-auto py-8'>
                 <h2 class='text-gray-700 text-center m-0'>
                     Think GoAt<span class='text-red-500'>IT</span> can help your business?
@@ -444,7 +532,7 @@
             <div class='relative flex justify-center pt-4 pb-8'>
                 <div class='inline-block relative transition-transform duration-100 ease' id='contactContactButton'>
                     <div class='heroContactButtonWiggle'>
-                        <button class='text-red-500 border-2 border-red-500 m-auto px-4 py-2 relative z-10' 
+                        <button id='contactOpenBtn' class='text-red-500 border-2 border-red-500 m-auto px-4 py-2 relative z-10' 
                             type="button"
                         >
                             Let Us Reach Out to You  
@@ -454,28 +542,25 @@
                 </div>
             </div>
         </div>
-        <div class='contactFormContainer contactHidden'>
-            <h5 class='contactFormHeader'>
-                Connect with <span>GoAtIT</span>
-            </h5>
-            <p class='contactFormInfo small'>
-                Fill this out with a little information about yourself and your project and we'll reach out soon!
+        <!-- just the overlay -->
+        <div id='contactFormOverlay' class='fixed inset-0 w-full h-full bg-gray-500 z-20' style='transform: translate(0, -100vh);'></div>
+        <div id='contactForm' class='fixed w-4/5 lg:w-1/2 xl:w-1/3 rounded-lg bg-white p-10 z-30 text-gray-700' style='top: 50%; left: 50%; transform: translate(-50%, 100%); max-width: 480px;'>
+            <h4 class='m-0 mb-2'>
+                Connect with GoAt<span class='text-red-500'>IT</span>
+            </h4>
+            <p class=''>
+                Fill this out with a little information about yourself and your project and we'll reach out to you.
             </p>
-            <form class='contactFormForm'>
-                <div class='contactFormInputContainer'>
-                    <input class='contactFormInput' placeholder='First Name' type='text'/>
-                </div>
-                <div class='contactFormInputContainer'>
-                    <input class='contactFormInput' placeholder='Last Name' type='text'/>
-                </div>
-                <div class='contactFormInputContainer'>
-                    <input class='contactFormInput' placeholder='Email Address' type='text' />
-                </div>
-                <div class='contactFormInputContainer'>
-                    <textarea rows='5' class='contactFormInput' placeholder='Project Description' type='text'></textarea>
-                </div>
-                <div class='contactFormButtonContainer'>
-                    <button class='contactFormSubmit' type='submit'>
+            <form class=''>
+                <input class='border-b-2 border-green-200 p-1 m-1 w-full' placeholder='First Name' type='text'/>
+                <input class='border-b-2 border-green-200 p-1 m-1 w-full' placeholder='Last Name' type='text'/>
+                <input class='border-b-2 border-green-200 p-1 m-1 w-full' placeholder='Email Address' type='text' />
+                <textarea rows='5' class='border-b-2 border-green-200 p-1 m-1 w-full' placeholder='Project Description' type='text'></textarea>
+                <div class='flex justify-end'>
+                    <button id='contactFormClose' class='mx-1 px-2' type='button'>
+                        Close
+                    </button>
+                    <button id='contactFormSubmit' class='text-red-500 border-2 border-red-500 px-2 mx-1' type='submit'>
                         Submit
                     </button>
                 </div>

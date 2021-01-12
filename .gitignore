@@ -3,3 +3,6 @@ node_modules
 
 #don't put any env variables up
 *.env
+
+#ignore any src files for illustrator
+*.ai
