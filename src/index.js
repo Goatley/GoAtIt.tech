@@ -1,13 +1,11 @@
 // import './index.css';
-import navInit from '../js/navInit';
-import heroInit from '../js/heroInit';
-import getInit from '../js/getInit';
-import includeInit from '../js/includeSection';
-import contactInit from '../js/contactInit';
+import navInit from '../js/navInit.js';
+import heroInit from '../js/heroInit.js';
+import getInit from '../js/getInit.js';
+import includeInit from '../js/includeSection.js';
+import contactInit from '../js/contactInit.js';
 
 //modules needed
-
-
 
 navInit();
 heroInit();

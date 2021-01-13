@@ -25,9 +25,6 @@
     --yellow-900: #8f5800;
 
 
-    /*Now establishing screen breakpoints*/
-    --border-radius: 10px;
-
 
 }
 
@@ -51,7 +48,7 @@
 
 /*type scale for desktop sites is at 1.250*/
 html {
-    font-size: calc(16px + (20 - 16) * ((100vw - 400px) / (1800 - 400)));
+    font-size: calc(14px + (20 - 14) * ((100vw - 400px) / (1800 - 400)));
 }
 
 

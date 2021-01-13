@@ -1,7 +1,10 @@
 import { gsap } from 'gsap';
-import { morphSVG } from 'gsap/MorphSVGPlugin';
+import { morphSVGPlugin } from 'gsap/MorphSVGPlugin';
 
 export default function navMobileToggleAnimation() {
+
+    //register morphSVG
+    // gsap.registerPlugin(morphSVGPlugin);
 
     //first establish the timeline from gsap
     var tl = gsap.timeline({ paused: true })

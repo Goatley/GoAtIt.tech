@@ -1,5 +1,5 @@
 //import functions for mobile nav menu
-import navMobileToggleAnimation from './animations/navMobileToggleAnimation';
+import navMobileToggleAnimation from './animations/navMobileToggleAnimation.js';
 
 export default function navInit() {
     //FUTURE
