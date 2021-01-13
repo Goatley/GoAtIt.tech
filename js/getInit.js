@@ -9,7 +9,8 @@ export default function getInit() {
     //register our drawsvg plugin
     gsap.registerPlugin(ScrollTrigger);
 
-
+//FOR NOW - I AM ALWAYS SETTING THIS TO FALSE
+//MAYBE LATER i'LL DECIDE TO PALY WITH SCROLLTRIGGER AND GET THE CARDS TO BE MORE PERFORMANT ON MOBILE BUT MAYBE NOT
     //grab the screen width for media queries
     var windowWidth = window.matchMedia('(max-width: 768px)');
 
@@ -47,14 +48,24 @@ function buildCardAnimation(mobile) {
     //this is how the card will grow/shrink and display/hide text
     var tl = gsap.timeline( { paused: true } );
 
+    //WANT TO REMOVE THIS
+    //THERE IS A CURRENT CHROME BUG WHICH RESULTS IN LOW FPS ON ANIMATIONS DURING SCROLL
+    //THIS IS A WORKAROUND FOR NOW, BUT WILL PROBABLY BE ADDRESSED IN FUTURE CHROME RELEASE
+    //IF SO, REMOVE THIS AS THE WILL-CHANGE PROPERTY CAN CAUSE OTHER PERFORMANCE DROPS
+    if (mobile) {
+        gsap.set(this, {
+            willChange: 'transform'
+        })
+    }   
+
     tl
         .add('start')
         .fromTo(this, {
-            boxShadow: '0 0 0 0 rgba(209, 227, 221, 0.25)'
+            // boxShadow: '0 0 0 0 rgba(209, 227, 221, 0.25)'
         },{
             duration: 0.25,
-            // scale: 1.2
-            boxShadow: '0 0 30px 25px rgba(209, 227, 221, 0.4)'
+            scale: 1.2,
+            // boxShadow: '0 0 30px 25px rgba(209, 227, 221, 0.4)'
         }, 'start')
         .to(this.querySelector('.getCardTitle'), {
             duration: 0.25,
