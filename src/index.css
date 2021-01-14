@@ -86,6 +86,6 @@ small, .text_small {font-size: 0.833rem;}
 
 @import '../styles/nav.css';
 @import '../styles/hero.css';
-@import '../styles/get.css';
+/* @import '../styles/get.css';
 @import '../styles/includeSection.css';
-@import '../styles/contact.css';
+@import '../styles/contact.css'; */

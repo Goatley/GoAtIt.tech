@@ -9,7 +9,7 @@ module.exports = {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].js'
    },
-   devtool: 'eval-source-map',
+   devtool: false,
    plugins: [new MiniCssExtractPlugin()],
    module: {
     rules: [
@@ -28,7 +28,7 @@ module.exports = {
           exclude: /node_modules/,
           use: [
             {
-              //extracts css into different css files
+              // extracts css into different css files
               loader: MiniCssExtractPlugin.loader
             },
             // for if we want to use css in JS and have the css injected into the <style> tags directly

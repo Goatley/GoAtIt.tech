@@ -1,4 +1,4 @@
-// import './index.css';
+import css from './index.css';
 import navInit from '../js/navInit.js';
 import heroInit from '../js/heroInit.js';
 import getInit from '../js/getInit.js';

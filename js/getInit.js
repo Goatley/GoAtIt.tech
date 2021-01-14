@@ -9,9 +9,9 @@ export default function getInit() {
     //register our drawsvg plugin
     gsap.registerPlugin(ScrollTrigger);
 
-//FOR NOW - I AM ALWAYS SETTING THIS TO FALSE
-//MAYBE LATER i'LL DECIDE TO PALY WITH SCROLLTRIGGER AND GET THE CARDS TO BE MORE PERFORMANT ON MOBILE BUT MAYBE NOT
+
     //grab the screen width for media queries
+    //this is used as the 'mobile' variable in later functions - determines if screen is > 768px or not
     var windowWidth = window.matchMedia('(max-width: 768px)');
 
     //if we're on anything mobile, have the animations just play from teh start for the cards
@@ -22,11 +22,6 @@ export default function getInit() {
     cards.forEach(card => {
         buildCardAnimation.call(card, windowWidth.matches);
     })
-    //window.addEventListener('load', () => initGetCards(windowWidth.matches));    
-    // if (windowWidth.matches) {
-    //     buildComputerAnimation(true);
-    //     buildCityAnimation(true);
-    // };
 }
 
 
