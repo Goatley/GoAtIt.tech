@@ -69,11 +69,18 @@
                 <div class='hidden md:flex md:items-center'>
                     <ul class='list-none flex'>
                         <li class='navOption mx-4'>
-                            About Us
+                            <button class='navDesktopOption desktopWhatWeDo'>
+                                What We Do
+                            </button>
+                        </li>
+                        <li class='navOption mx-4'>
+                            <button class='navDesktopOption desktopAboutOurSites'>
+                                About Our Sites
+                            </button>
                         </li>
                         <li class='mx-4'>
                             <div class='navContactBtn inline-block relative transition-transform duration-100 ease'>
-                                    <button class='text-red-500 border-2 border-red-500 m-auto px-2 relative z-10' 
+                                    <button class='desktopContactUs text-red-500 border-2 border-red-500 m-auto px-2 relative z-10' 
                                         type="button"
                                     >
                                         Contact Us  
@@ -107,11 +114,18 @@
                     <div class='absolute navCont rounded-lg' style='width: 200px; height: 400px; right: 1rem; top: 20px; transform-origin: top right; transform: scaleX(0.2) scaleY(0.1);'>
                         <ul class='list-none w-full h-2/3 justify-center flex flex-col items-center'>
                             <li class='navMobileOption opacity-0 m-4' style='transform: translateY(30%);'>
-                                About Us
+                                <button type='button' class='mobileWhatWeDo'>
+                                    What We Do
+                                </button>
+                            </li>
+                            <li class='navMobileOption opacity-0 m-4' style='transform: translateY(30%);'>        
+                                <button type='button' class='mobileAboutOurSites'>
+                                    About Our Sites
+                                </button>
                             </li>
                             <li class='navMobileOption opacity-0 m-4' style='transform: translateY(30%);'>
                                 <div class='navMobileContactBtn inline-block relative transition-transform duration-100 ease'>
-                                        <button class='text-red-500 border-2 border-red-500 m-auto px-2 relative z-10' 
+                                        <button class='mobileContactUs text-red-500 border-2 border-red-500 m-auto px-2 relative z-10' 
                                             type="button"
                                         >
                                             Contact Us  
@@ -125,6 +139,7 @@
                 <div id='navOverlay' class='fixed inset-0 w-full h-screen bg-gray-500 z-20' style='transform: translate(0, -100vh);'></div>   
             </div>
         </nav>
+        <!-- hero container -->
         <div class='w-full bg-green-200 relative overflow-x-hidden mt-nav md:m-0' id='hero'>
             <!-- hero text and hero image svg -->
             <div class='w-3/4 md:w-2/3 m-auto relative z-10'>
@@ -212,7 +227,8 @@
                 <path id='cloud5' fill="#f2f7f6" d="M87.36 250.17c-8.18 2.69-17.14 3.61-25.39 1.16s-15.63-8.62-18.21-16.83c-3.59-11.45 3.5-24.77 14.57-29.44s24.65-1.17 33.19 7.27c-4.54-3-9-6.25-12.35-10.48s-5.73-9.49-5.58-14.91c.22-7.82 5.37-14.53 10.43-20.49 4.32-5.06 8.86-10.12 14.66-13.38 11.16-6.25 25.55-4.67 36.67 1.66a27.5 27.5 0 019.23 7.9c3 4.31 4.07 9.69 4.13 14.94a44 44 0 01-6.91 24.16c.46-5.36 3.35-10.16 6.22-14.72 2-3.11 4-6.27 6.82-8.62 6.9-5.74 17.84-5.29 24.89.25s10.13 15.32 8.56 24.15c-.94 5.22-3.81 10.59-8.81 12.36 7.54.27 15.32 4.16 18.45 11 3.8 8.31-.42 18.73-7.86 24s-17.2 6.33-26.28 5.24-17.8-4.06-26.72-6.05c-19.79-4.42-30.15-4.57-49.71.76" transform="translate(-42.82 -149.11)"/>
             </svg>                             
         </div>
-        <div class='w-4/5 container m-auto mb-12 pt-8 text-gray-700'>
+        <!-- what you get -->
+        <div id='WhatWeDo' class='w-4/5 container m-auto mb-12 pt-8 text-gray-700' style='scroll-margin-top: 80px;'>
             <div class='mb-12 py-4' id='get'>
                 <h2 class='text-center text-gray-700'>
                     Here's what you get working with GoAt<span class='text-red-500'>IT</span>:
@@ -339,6 +355,7 @@
                 </div>
             </div>
         </div>
+        <!-- middle contact area -->
         <div class='w-full bg-green-200'>
             <div class='w-4/5 container m-auto p-8'>
                 <h3 class='text-center pt-12 pb-8 m-0 text-gray-700'>
@@ -359,7 +376,8 @@
             </div>
         </div>
         <!-- our include section with the scrolling options -->
-        <div class='w-4/5 m-auto pt-8 pb-16'>
+        <!-- 'about our sites' -->
+        <div class='w-4/5 m-auto pt-8 pb-16' id='AboutOurSites' style='scroll-margin-top: 80px;'>
             <div class='text-gray-700'>
                 <h2 class='text-center pb-4'>
                     Every GoAt<span class='text-red-500'>IT</span> website includes:
@@ -610,7 +628,7 @@
                 </div>
             </div>                                      
         </div>
-        <div class='w-full bg-green-200 text-gray-700' id='contact'>
+        <div class='w-full bg-green-200 text-gray-700' id='Contact' style='scroll-margin-top: 80px;'>
             <div class='w-4/5 container m-auto py-8'>
                 <h2 class='text-gray-700 text-center m-0'>
                     Think GoAt<span class='text-red-500'>IT</span> can help your business?

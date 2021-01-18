@@ -13,6 +13,7 @@ export default function navInit() {
 function navDesktopInit() {
     var contactBtn = document.querySelector('.navContactBtn');
 
+    //nav contact button stuff
     contactBtn.addEventListener('mouseenter', () => {
         contactBtn.style.transform = 'scale(1.1)';
         contactBtn.querySelector('button').style.backgroundColor = '#FF4242';
@@ -24,6 +25,17 @@ function navDesktopInit() {
         contactBtn.querySelector('button').style.backgroundColor = 'transparent';
         contactBtn.querySelector('button').style.color = '#FF4242';
     })
+
+
+    //adding click handlers for the links here
+    //what we do
+    document.querySelector('.desktopWhatWeDo').addEventListener('click', () => {document.querySelector('#WhatWeDo').scrollIntoView({behavior: 'smooth'})})
+
+    //our sites include
+    document.querySelector('.desktopAboutOurSites').addEventListener('click', () => {document.querySelector('#AboutOurSites').scrollIntoView({behavior: 'smooth'})})
+
+    //contact info
+    document.querySelector('.desktopContactUs').addEventListener('click', () => {document.querySelector('#Contact').scrollIntoView({behavior: 'smooth'})})
 };
 
 //mobile nav bar initializing
@@ -59,5 +71,15 @@ function navMobileInit() {
     //click handlers for the button, also for the overlay to close it if needed
     btn.addEventListener('click', () => toggleMenu());
     document.querySelector('#navOverlay').addEventListener('click', () => toggleMenu());
+
+    //adding click handlers for the links here
+    //what we do
+    document.querySelector('.mobileWhatWeDo').addEventListener('click', () => {document.querySelector('#WhatWeDo').scrollIntoView({behavior: 'smooth'}); toggleMenu();})
+
+    //our sites include
+    document.querySelector('.mobileAboutOurSites').addEventListener('click', () => {document.querySelector('#AboutOurSites').scrollIntoView({behavior: 'smooth'}); toggleMenu();})
+
+    //contact info
+    document.querySelector('.mobileContactUs').addEventListener('click', () => {document.querySelector('#Contact').scrollIntoView({behavior: 'smooth'}); toggleMenu();})
 
 };
