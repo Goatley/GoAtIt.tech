@@ -46,12 +46,20 @@ export default function navMobileToggleAnimation() {
             opacity: aniDuration,
         }, 'start')
         //now we need to make the actual nav menu pop in from the right side
-        .fromTo('#navSideMenu', {
-            x: '100%'
-        }, {
+        .to('.navCont', {
             duration: aniDuration,
-            x: '0%',
+            scaleX: '1',
+            scaleY: '1',
+            backgroundColor: '#e6efec',
         }, 'start')
+        // now make the menu items populate by staggering them
+        .to('.navMobileOption', {
+            duration: aniDuration/2,
+            delay: aniDuration,
+            stagger: 0.1,
+            opacity: 1,
+            y: 0
+        },'start')
 
 
     return tl;

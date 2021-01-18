@@ -71,9 +71,17 @@ function buildCardAnimation(mobile) {
             opacity: 0
         }, {
             duration: 0.25,
-            // scale: 1/1.2,
             opacity: 1,
         }, 'start')
+        //only scale down the description if we aren't on mobile
+    if (!mobile) {
+        tl.fromTo(this.querySelector('.getCardDescription'), {
+            scale: 0.7,
+        }, {
+            duration: 0.25,
+            scale: 1/1.2,
+        }, 'start')
+    }
 
     if (mobile) {
         if (typeof animation !== 'undefined') {

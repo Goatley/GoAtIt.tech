@@ -16,7 +16,7 @@
         </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Atlanta Web Development - GoAtIT Develops Custom and Unique Websites for Your Business</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1 minimum-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -83,9 +83,9 @@
                     </ul>
                 </div>
                 <!-- the nav menu for mobile sites -->
-                <div class='flex items-center absolute h-full z-30 right-0 md:hidden' id='navBtnContainer' style='padding-right: 3%;'>
+                <div class='flex items-center absolute h-full z-30 right-0 md:hidden' id='navBtnContainer'>
                     <!-- first the SVG for the open/close menu, tied to the menuToggle.js file for control -->
-                    <button class='menuToggleBTN rounded-lg m-4 z-30 h-1/2'>
+                    <button class='menuToggleBTN rounded-lg m-4 p-1 z-30 h-1/2'>
                         <svg class='h-full' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 436.98 432" aria-labelledby="nav_toggle_BTN_title" role='img'>
                             <title id='nav_toggle_BTN_title'>Toggle Button for Navigation Menu</title>>
                             <path id="navBorder" visibility='hidden' d="M503 1v430H73V1h430m1-1H72v432h432V0z" transform="translate(-69.66)"/>
@@ -93,23 +93,23 @@
                                 <path id='navOpenMid' d="M75.63 215.5h287"/>
                                 <path id='navOpenBot' d="M76.63 341.5h287"/>
                                 <path id='navOpenTop' d="M75.63 90.5h287"/>
-                              </g>
-                              <g id="navGoatGroup" class='invisible'>
+                                </g>
+                                <g id="navGoatGroup" class='invisible'>
                                 <path id='navGoatPath' fill="none" stroke="#575a5e" stroke-miterlimit="10" stroke-width="10" d="M367.74 135.84l11.9 47.23.44 12.47-27.77 192.88h-13.88l-13.89-123.99-55.2 20.66-196.28-6.94 1.08-9.61-13.43 119.88h-10.8L32.94 264.43 5.17 209.32l13.89-55.11-15.43-19.9 9.25-6.12 12.35 12.25h285.43l27.77-55.11-13.89-13.78-41.66 13.78L324.54 44l97.2 55.11 13.89 27.55L416.77 152l-11.4-11.56-12.76-12.03-12.97 54.66"/>
                                 <g id="CloseIcon">
-                                  <path id="DiagTop" fill="none" stroke="#ff4242" stroke-miterlimit="10" stroke-width="4" d="M273.63 261l-144-108"/>
-                                  <path id="DiagBot" fill="none" stroke="#ff4242" stroke-miterlimit="10" stroke-width="4" d="M129.63 261l144-108"/>
+                                    <path id="DiagTop" fill="none" stroke="#ff4242" stroke-miterlimit="10" stroke-width="4" d="M273.63 261l-144-108"/>
+                                    <path id="DiagBot" fill="none" stroke="#ff4242" stroke-miterlimit="10" stroke-width="4" d="M129.63 261l144-108"/>
                                 </g>
-                              </g>
+                                </g>
                         </svg>
                     </button>
-                    <!-- the actual side navbar itself                    -->
-                    <div id='navSideMenu' class='fixed top-0 right-0 bg-green-200 w-3/4 max-w-12 h-screen z-20 md:hidden' style='transform: translate(100%, 0)'>
+                    <!-- this is the expanding side nav container -->
+                    <div class='absolute navCont rounded-lg' style='width: 200px; height: 400px; right: 1rem; top: 20px; transform-origin: top right; transform: scaleX(0.2) scaleY(0.1);'>
                         <ul class='list-none w-full h-2/3 justify-center flex flex-col items-center'>
-                            <li class='navOption m-4'>
+                            <li class='navMobileOption opacity-0 m-4' style='transform: translateY(30%);'>
                                 About Us
                             </li>
-                            <li class='m-4'>
+                            <li class='navMobileOption opacity-0 m-4' style='transform: translateY(30%);'>
                                 <div class='navMobileContactBtn inline-block relative transition-transform duration-100 ease'>
                                         <button class='text-red-500 border-2 border-red-500 m-auto px-2 relative z-10' 
                                             type="button"

@@ -240,11 +240,18 @@ function navMobileToggleAnimation() {
     duration: aniDuration,
     opacity: aniDuration
   }, 'start') //now we need to make the actual nav menu pop in from the right side
-  .fromTo('#navSideMenu', {
-    x: '100%'
-  }, {
+  .to('.navCont', {
     duration: aniDuration,
-    x: '0%'
+    scaleX: '1',
+    scaleY: '1',
+    backgroundColor: '#e6efec'
+  }, 'start') // now make the menu items populate by staggering them
+  .to('.navMobileOption', {
+    duration: aniDuration / 2,
+    delay: aniDuration,
+    stagger: 0.1,
+    opacity: 1,
+    y: 0
   }, 'start');
   return tl;
 }
@@ -442,9 +449,17 @@ function buildCardAnimation(mobile) {
     opacity: 0
   }, {
     duration: 0.25,
-    // scale: 1/1.2,
     opacity: 1
-  }, 'start');
+  }, 'start'); //only scale down the description if we aren't on mobile
+
+  if (!mobile) {
+    tl.fromTo(this.querySelector('.getCardDescription'), {
+      scale: 0.7
+    }, {
+      duration: 0.25,
+      scale: 1 / 1.2
+    }, 'start');
+  }
 
   if (mobile) {
     if (typeof animation !== 'undefined') {
@@ -849,8 +864,10 @@ function navMobileInit() {
     //run animation/reverse depending on if the menu is open or not
     //start animation to close menu first
     if (isMenuOpen) {
+      navAni.timeScale(1.5);
       navAni.reverse(); //open menu here
     } else if (!isMenuOpen) {
+      navAni.timeScale(1);
       navAni.play();
     } //flip the open menu state variable
 

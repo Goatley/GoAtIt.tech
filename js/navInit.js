@@ -44,9 +44,11 @@ function navMobileInit() {
         //run animation/reverse depending on if the menu is open or not
         //start animation to close menu first
         if(isMenuOpen) {
+            navAni.timeScale(1.5);
             navAni.reverse();
         //open menu here
         } else if(!isMenuOpen) {
+            navAni.timeScale(1);
             navAni.play();
         }
 
