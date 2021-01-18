@@ -6,3 +6,6 @@ node_modules
 
 #ignore any src files for illustrator
 *.ai
+
+#ignore prepross stuff
+prepros.config
