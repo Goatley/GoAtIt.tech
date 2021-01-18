@@ -80,7 +80,12 @@ h5 {font-size: 1.2rem;}
 
 small, .text_small {font-size: 0.833rem;}
 
-
+/* setting up scroll margin pieces */
+@media only screen and (max-width: 768px) {
+  #WhatWeDo, #AboutOurSites, #Contact {
+    scroll-margin-top: 80px;
+  }
+}
 
 
 

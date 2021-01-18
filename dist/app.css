@@ -1346,6 +1346,14 @@ small, .text_small {
   font-size: 0.833rem;
 }
 
+/* setting up scroll margin pieces */
+
+@media only screen and (max-width: 768px) {
+  #WhatWeDo, #AboutOurSites, #Contact {
+    scroll-margin-top: 80px;
+  }
+}
+
 /* @import '../styles/get.css';
 @import '../styles/includeSection.css';
 @import '../styles/contact.css'; */
