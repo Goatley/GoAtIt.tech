@@ -9,3 +9,4 @@ node_modules
 
 #ignore prepross stuff
 prepros.config
+dist/prepros.config
