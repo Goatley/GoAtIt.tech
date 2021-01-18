@@ -240,11 +240,18 @@ function navMobileToggleAnimation() {
     duration: aniDuration,
     opacity: aniDuration
   }, 'start') //now we need to make the actual nav menu pop in from the right side
-  .fromTo('#navSideMenu', {
-    x: '100%'
-  }, {
+  .to('.navCont', {
     duration: aniDuration,
-    x: '0%'
+    scaleX: '1',
+    scaleY: '1',
+    backgroundColor: '#e6efec'
+  }, 'start') // now make the menu items populate by staggering them
+  .to('.navMobileOption', {
+    duration: aniDuration / 2,
+    delay: aniDuration,
+    stagger: 0.1,
+    opacity: 1,
+    y: 0
   }, 'start');
   return tl;
 }
@@ -442,9 +449,17 @@ function buildCardAnimation(mobile) {
     opacity: 0
   }, {
     duration: 0.25,
-    // scale: 1/1.2,
     opacity: 1
-  }, 'start');
+  }, 'start'); //only scale down the description if we aren't on mobile
+
+  if (!mobile) {
+    tl.fromTo(this.querySelector('.getCardDescription'), {
+      scale: 0.7
+    }, {
+      duration: 0.25,
+      scale: 1 / 1.2
+    }, 'start');
+  }
 
   if (mobile) {
     if (typeof animation !== 'undefined') {
@@ -821,7 +836,8 @@ function navInit() {
 }
 
 function navDesktopInit() {
-  var contactBtn = document.querySelector('.navContactBtn');
+  var contactBtn = document.querySelector('.navContactBtn'); //nav contact button stuff
+
   contactBtn.addEventListener('mouseenter', function () {
     contactBtn.style.transform = 'scale(1.1)';
     contactBtn.querySelector('button').style.backgroundColor = '#FF4242';
@@ -831,6 +847,25 @@ function navDesktopInit() {
     contactBtn.style.transform = 'scale(1)';
     contactBtn.querySelector('button').style.backgroundColor = 'transparent';
     contactBtn.querySelector('button').style.color = '#FF4242';
+  }); //adding click handlers for the links here
+  //what we do
+
+  document.querySelector('.desktopWhatWeDo').addEventListener('click', function () {
+    document.querySelector('#WhatWeDo').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }); //our sites include
+
+  document.querySelector('.desktopAboutOurSites').addEventListener('click', function () {
+    document.querySelector('#AboutOurSites').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }); //contact info
+
+  document.querySelector('.desktopContactUs').addEventListener('click', function () {
+    document.querySelector('#Contact').scrollIntoView({
+      behavior: 'smooth'
+    });
   });
 }
 
@@ -849,8 +884,10 @@ function navMobileInit() {
     //run animation/reverse depending on if the menu is open or not
     //start animation to close menu first
     if (isMenuOpen) {
+      navAni.timeScale(1.5);
       navAni.reverse(); //open menu here
     } else if (!isMenuOpen) {
+      navAni.timeScale(1);
       navAni.play();
     } //flip the open menu state variable
 
@@ -864,6 +901,28 @@ function navMobileInit() {
   });
   document.querySelector('#navOverlay').addEventListener('click', function () {
     return toggleMenu();
+  }); //adding click handlers for the links here
+  //what we do
+
+  document.querySelector('.mobileWhatWeDo').addEventListener('click', function () {
+    document.querySelector('#WhatWeDo').scrollIntoView({
+      behavior: 'smooth'
+    });
+    toggleMenu();
+  }); //our sites include
+
+  document.querySelector('.mobileAboutOurSites').addEventListener('click', function () {
+    document.querySelector('#AboutOurSites').scrollIntoView({
+      behavior: 'smooth'
+    });
+    toggleMenu();
+  }); //contact info
+
+  document.querySelector('.mobileContactUs').addEventListener('click', function () {
+    document.querySelector('#Contact').scrollIntoView({
+      behavior: 'smooth'
+    });
+    toggleMenu();
   });
 }
 
