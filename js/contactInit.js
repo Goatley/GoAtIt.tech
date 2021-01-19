@@ -1,4 +1,5 @@
-import { gsap } from 'gsap';
+import { gsap } from 'gsap';;
+import submitForm from '../functions/contactSubmit'
 
 export default function contactInit() {
     //state variable to determine if the contact form is open or not
@@ -27,6 +28,26 @@ export default function contactInit() {
     })
     contactSubmitBtn.addEventListener('mouseleave', () => {
         submitHoverAni.reverse();
+    })
+
+    /*function call to submit the form
+    first - prevent default so the html form doesn't submit
+    then use axios to actually submit the post request to our url
+    then wait for a response to get the update
+    */
+    contactSubmitBtn.addEventListener('click', (e) => {
+        //dont' submit the form normally
+        e.preventDefault();
+
+        var firstName = contactForm.querySelector('.contactFirstName').value;
+        var lastName = contactForm.querySelector('.contactLastName').value;
+        var email = contactForm.querySelector('.contactEmail').value;
+        var description = contactForm.querySelector('.contactDescription').value;
+
+        //run the submit function
+        //internally, it will update and run animations if successful
+        submitForm(firstName, lastName, email, description);
+
     })
 
     //close button transitions

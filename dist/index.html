@@ -628,6 +628,7 @@
                 </div>
             </div>                                      
         </div>
+        <!-- contact us! -->
         <div class='w-full bg-green-200 text-gray-700' id='Contact'>
             <div class='w-4/5 container m-auto py-8'>
                 <h2 class='text-gray-700 text-center m-0'>
@@ -669,11 +670,12 @@
             <p class=''>
                 Fill this out with a little information about yourself and your project and we'll reach out to you.
             </p>
+            <!-- form submission handled in our contactSubmit function -->
             <form class=''>
-                <input class='border-b-2 border-green-200 p-1 m-1 w-full' placeholder='First Name' type='text'/>
-                <input class='border-b-2 border-green-200 p-1 m-1 w-full' placeholder='Last Name' type='text'/>
-                <input class='border-b-2 border-green-200 p-1 m-1 w-full' placeholder='Email Address' type='text' />
-                <textarea rows='5' class='border-b-2 border-green-200 p-1 m-1 w-full' placeholder='Project Description' type='text'></textarea>
+                <input class='border-b-2 border-green-200 p-1 m-1 w-full contactFirstName' name="firstName" placeholder='First Name' type='text'/>
+                <input class='border-b-2 border-green-200 p-1 m-1 w-full contactLastName' name='lastName' placeholder='Last Name' type='text'/>
+                <input class='border-b-2 border-green-200 p-1 m-1 w-full contactEmail' name="email" placeholder='Email Address' type='text' />
+                <textarea rows='5' class='border-b-2 border-green-200 p-1 m-1 w-full contactDescription' name='description' placeholder='Project Description' type='text'></textarea>
                 <div class='flex justify-end'>
                     <button id='contactFormClose' class='mx-1 px-2' type='button'>
                         Close

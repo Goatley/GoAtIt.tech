@@ -28,7 +28,10 @@
     "webpack-cli": "^4.1.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^0.21.1",
     "gsap": "npm:@gsap/shockingly@^3.5.1",
+    "http": "0.0.1-security",
     "tailwindcss": "^1.9.6"
   }
 }
