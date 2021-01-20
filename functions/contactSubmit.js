@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-export default async function submitForm(fName, lName, contactEmail, projectdesc) {
-    console.log('test');
+export default async function submitForm(fName, lName, contactEmail, projectdesc, toggleForm) {
+    //first we want to play the 'loading' animation after click
+    console.log('loading')
+
+
     var res =  await axios.post(
-        'https://doge5hhfe8.execute-api.us-east-1.amazonaws.com/prod/submitcontact',
+        'https://api.goatit.tech/prod/submitcontact',
         {
             firstName: fName,
             lastName: lName,
@@ -13,5 +16,15 @@ export default async function submitForm(fName, lName, contactEmail, projectdesc
     )
 
     console.log(res);
+
+    //if successful
+    if (res.status == '200') {
+        //close the form
+        toggleForm();
+        console.log('success!')
+    } else {
+        console.log('oops... looks like we ran into an error')
+    }
+
     return res;
 }

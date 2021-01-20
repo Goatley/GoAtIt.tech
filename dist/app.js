@@ -1977,20 +1977,21 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
-function submitForm(_x, _x2, _x3, _x4) {
+function submitForm(_x, _x2, _x3, _x4, _x5) {
   return _submitForm.apply(this, arguments);
 }
 
 function _submitForm() {
-  _submitForm = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(fName, lName, contactEmail, projectdesc) {
+  _submitForm = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(fName, lName, contactEmail, projectdesc, toggleForm) {
     var res;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log('test');
+            //first we want to play the 'loading' animation after click
+            console.log('loading');
             _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://doge5hhfe8.execute-api.us-east-1.amazonaws.com/prod/submitcontact', {
+            return axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://api.goatit.tech/prod/submitcontact', {
               firstName: fName,
               lastName: lName,
               email: contactEmail,
@@ -1999,10 +2000,19 @@ function _submitForm() {
 
           case 3:
             res = _context.sent;
-            console.log(res);
+            console.log(res); //if successful
+
+            if (res.status == '200') {
+              //close the form
+              toggleForm();
+              console.log('success!');
+            } else {
+              console.log('oops... looks like we ran into an error');
+            }
+
             return _context.abrupt("return", res);
 
-          case 6:
+          case 7:
           case "end":
             return _context.stop();
         }
@@ -2258,7 +2268,8 @@ function navMobileToggleAnimation() {
     duration: aniDuration,
     scaleX: '1',
     scaleY: '1',
-    backgroundColor: '#e6efec'
+    backgroundColor: '#e6efec',
+    border: '4px solid #d1e3dd'
   }, 'start') // now make the menu items populate by staggering them
   .to('.navMobileOption', {
     duration: aniDuration / 2,
@@ -2300,11 +2311,12 @@ function contactInit() {
   var overlay = document.querySelector('#contactOverlay');
   var contactOpenBtn = document.querySelector('#contactOpenBtn');
   var contactSubmitBtn = contactForm.querySelector('#contactFormSubmit');
-  var contactCloseBtn = contactForm.querySelector('#contactFormClose'); //establishes the timeline for the opening animation
+  var contactCloseBtn = contactForm.querySelector('#contactFormClose');
+  var midContactBtn = document.querySelector('.midContactBtn'); //establishes the timeline for the opening animation
 
   var openFormAni = buildTimeline();
   var submitHoverAni = buildSubmitHoverTL();
-  var closeHoverAni = buildCloseHoverTL(); //establish event listeners
+  var closeHoverAni = buildCloseHoverTL(); //establish event listeners to open/close form
 
   contactOpenBtn.addEventListener('click', function () {
     return toggleForm();
@@ -2319,6 +2331,12 @@ function contactInit() {
   });
   contactSubmitBtn.addEventListener('mouseleave', function () {
     submitHoverAni.reverse();
+  }); //event listener for middle contact button
+
+  midContactBtn.addEventListener('click', function () {
+    document.querySelector('#Contact').scrollIntoView({
+      behavior: 'smooth'
+    });
   });
   /*function call to submit the form
   first - prevent default so the html form doesn't submit
@@ -2335,7 +2353,7 @@ function contactInit() {
     var description = contactForm.querySelector('.contactDescription').value; //run the submit function
     //internally, it will update and run animations if successful
 
-    (0,_functions_contactSubmit__WEBPACK_IMPORTED_MODULE_0__.default)(firstName, lastName, email, description);
+    (0,_functions_contactSubmit__WEBPACK_IMPORTED_MODULE_0__.default)(firstName, lastName, email, description, toggleForm);
   }); //close button transitions
 
   contactCloseBtn.addEventListener('mouseenter', function () {
@@ -2757,7 +2775,7 @@ function includeInit() {
 
   function updateInclude(newInclude) {
     currentInclude = newInclude;
-  } //assign event listeners to morph the svg and update the current SVG collection
+  } //assign event listeners to update the current SVG collection
 
 
   function btnClick(i) {
@@ -2773,7 +2791,7 @@ function includeInit() {
           duration: 0.1,
           color: '#313335' //gray-700
 
-        }); //now change the selectors on the side to show the right optino as well
+        }); //now change the selectors on the side to show the right option as well
 
         gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.to([selectors[0][currentInclude], selectors[1][currentInclude]], {
           duration: 0.1,
@@ -2789,13 +2807,13 @@ function includeInit() {
           //first scroll the current image out
           gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.to(includeArr[currentInclude], {
             duration: 0.5,
-            y: '-150%',
+            y: '-50%',
             opacity: 0,
             ease: "elastic.out(0.5, 0.75)"
           }); //now bring the new image and description in
 
           gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.fromTo(includeArr[i], {
-            y: '150%',
+            y: '50%',
             opacity: 0
           }, {
             duration: 0.5,
@@ -2807,12 +2825,12 @@ function includeInit() {
           //first scroll the SVG/descriptions to be shown
           gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.to(includeArr[currentInclude], {
             duration: 0.5,
-            y: '150%',
+            y: '50%',
             opacity: 0,
             ease: "elastic.out(0.5, 0.75)"
           });
           gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.fromTo(includeArr[i], {
-            y: '-150%',
+            y: '-50%',
             opacity: 0
           }, {
             duration: 0.5,

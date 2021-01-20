@@ -51,6 +51,7 @@ export default function navMobileToggleAnimation() {
             scaleX: '1',
             scaleY: '1',
             backgroundColor: '#e6efec',
+            border: '4px solid #d1e3dd',
         }, 'start')
         // now make the menu items populate by staggering them
         .to('.navMobileOption', {

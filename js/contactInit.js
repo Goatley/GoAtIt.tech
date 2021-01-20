@@ -11,13 +11,14 @@ export default function contactInit() {
     var contactOpenBtn = document.querySelector('#contactOpenBtn');
     var contactSubmitBtn = contactForm.querySelector('#contactFormSubmit');
     var contactCloseBtn = contactForm.querySelector('#contactFormClose');
+    var midContactBtn = document.querySelector('.midContactBtn');
 
     //establishes the timeline for the opening animation
     var openFormAni = buildTimeline();
     var submitHoverAni = buildSubmitHoverTL();
     var closeHoverAni = buildCloseHoverTL();
 
-    //establish event listeners
+    //establish event listeners to open/close form
     contactOpenBtn.addEventListener('click', () => toggleForm());
     // contactSubmitBtn.addEventListener('click', () => toggleForm());
     contactCloseBtn.addEventListener('click', () => toggleForm());
@@ -28,6 +29,11 @@ export default function contactInit() {
     })
     contactSubmitBtn.addEventListener('mouseleave', () => {
         submitHoverAni.reverse();
+    })
+
+    //event listener for middle contact button
+    midContactBtn.addEventListener('click', () => {
+        document.querySelector('#Contact').scrollIntoView({behavior: 'smooth'})
     })
 
     /*function call to submit the form
@@ -46,7 +52,7 @@ export default function contactInit() {
 
         //run the submit function
         //internally, it will update and run animations if successful
-        submitForm(firstName, lastName, email, description);
+        submitForm(firstName, lastName, email, description, toggleForm);
 
     })
 

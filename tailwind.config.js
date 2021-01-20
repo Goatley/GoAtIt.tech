@@ -73,7 +73,11 @@ module.exports = {
         'h-60': '15rem'
       },
       minHeight: {
-        '100': '100px' 
+        '100': '100px',
+        '3/4': '75vh', 
+      },
+      maxHeight: {
+        '1/2': '50%'
       },
       spacing: {
         nav: '80px',

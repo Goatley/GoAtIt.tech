@@ -37,7 +37,7 @@ export default function includeInit() {
         currentInclude = newInclude;
     }
 
-    //assign event listeners to morph the svg and update the current SVG collection
+    //assign event listeners to update the current SVG collection
     function btnClick(i) {
         btns[i].addEventListener('click', () => {
 
@@ -53,7 +53,7 @@ export default function includeInit() {
                     duration: 0.1,
                     color: '#313335' //gray-700
                 })
-                //now change the selectors on the side to show the right optino as well
+                //now change the selectors on the side to show the right option as well
                 gsap.to([selectors[0][currentInclude], selectors[1][currentInclude]], {
                     duration: 0.1,
                     opacity: 0
@@ -71,14 +71,14 @@ export default function includeInit() {
                     //first scroll the current image out
                     gsap.to(includeArr[currentInclude], {
                         duration: 0.5,
-                        y: '-150%',
+                        y: '-50%',
                         opacity: 0,
                         ease: "elastic.out(0.5, 0.75)",
                     })
 
                     //now bring the new image and description in
                     gsap.fromTo(includeArr[i], {
-                            y: '150%',
+                            y: '50%',
                             opacity: 0,
                         }, 
                         {
@@ -92,12 +92,12 @@ export default function includeInit() {
                     //first scroll the SVG/descriptions to be shown
                     gsap.to(includeArr[currentInclude], {
                         duration: 0.5,
-                        y: '150%',
+                        y: '50%',
                         opacity: 0,
                         ease: "elastic.out(0.5, 0.75)",
                     })
                     gsap.fromTo(includeArr[i], {
-                            y: '-150%',
+                            y: '-50%',
                             opacity: 0,
                         },
                         {
