@@ -13,7 +13,7 @@ export default function() {
             duration: 0.5,
             opacity: 1,
         }, 'start')
-        .fromTo('.heroText h5', {
+        .fromTo('.heroText h2', {
             y: '+=25',
             opacity: 0,
         }, {
