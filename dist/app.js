@@ -2024,6 +2024,101 @@ function _submitForm() {
 
 /***/ }),
 
+/***/ "./js/animations/cloudAnimations.js":
+/*!******************************************!*\
+  !*** ./js/animations/cloudAnimations.js ***!
+  \******************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ initiateClouds
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/gsap-core.js");
+
+function initiateClouds() {
+  /*
+  Cloud moving portion
+  */
+  var cloud1Len = document.querySelector('#Cloud1Group').clientWidth;
+  var cloud2Len = document.querySelector('#Cloud2Group').clientWidth;
+  var cloud3Len = document.querySelector('#Cloud3Group').clientWidth;
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({});
+  tl.add('cloudStart');
+  tl.to('#Cloud1Group', {
+    duration: 40,
+    x: window.innerWidth + cloud1Len,
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone,
+    repeat: -1
+  }, 'cloudStart+=20');
+  tl.to('#Cloud2Group', {
+    duration: 60,
+    x: window.innerWidth + cloud2Len,
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone,
+    repeat: -1
+  }, 'cloudStart-=10');
+  tl.to('#Cloud3Group', {
+    duration: 30,
+    x: window.innerWidth + cloud3Len,
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone,
+    repeat: -1
+  }, 'cloudStart+=1');
+  tl.to('#Cloud4Group', {
+    duration: 55,
+    x: window.innerWidth + cloud3Len,
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone,
+    repeat: -1
+  }, 'cloudStart+=20');
+  tl.to('#Cloud5Group', {
+    duration: 45,
+    x: window.innerWidth + cloud3Len,
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone,
+    repeat: -1
+  }, 'cloudStart+=11');
+  return tl; //this makes the clouds bob up and down at different times
+  // gsap.to('#Cloud1Group', 3, {
+  // yoyo: true,
+  // repeat: -1,
+  // y: '+=20',
+  // ease: Power1.easeInOut,
+  // })
+  // gsap.to('#Cloud2Group', 6, {
+  // yoyo: true,
+  // repeat: -1,
+  // y: '+=25',
+  // ease: Power1.easeInOut,
+  // })
+  // gsap.to('#Cloud3Group', 3, {
+  // yoyo: true,
+  // repeat: -1,
+  // y: '+=15',
+  // ease: Power1.easeInOut,
+  // delay: 1.25,
+  // })
+  // gsap.to('#Cloud4Group', 3, {
+  // yoyo: true,
+  // repeat: -1,
+  // y: '+=15',
+  // ease: Power1.easeInOut,
+  // delay: 1.25,
+  // })
+  // gsap.to('#Cloud5Group', 3, {
+  // yoyo: true,
+  // repeat: -1,
+  // y: '+=15',
+  // ease: Power1.easeInOut,
+  // delay: 1.25,
+  // })
+}
+
+/***/ }),
+
 /***/ "./js/animations/getCityAnimation.js":
 /*!*******************************************!*\
   !*** ./js/animations/getCityAnimation.js ***!
@@ -2171,6 +2266,154 @@ function buildComputerAnimation() {
     width: 400,
     repeat: -1
   }, 'AnimationStart-=0.75');
+  return tl;
+}
+
+/***/ }),
+
+/***/ "./js/animations/heroFlagAnimation.js":
+/*!********************************************!*\
+  !*** ./js/animations/heroFlagAnimation.js ***!
+  \********************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ flagAnimation
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/gsap-core.js");
+
+function flagAnimation() {
+  var tl = new gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    repeat: -1,
+    paused: true
+  });
+  tl.add('animationStart');
+  tl.to('#Flag0', {
+    duration: 0.5,
+    morphSVG: '#Flag1',
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone
+  });
+  tl.to('#Flag0', {
+    duration: 0.5,
+    morphSVG: '#Flag2',
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone
+  });
+  tl.to('#Flag0', {
+    duration: 0.5,
+    morphSVG: '#Flag3',
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone
+  });
+  tl.to('#Flag0', {
+    duration: 0.5,
+    morphSVG: '#Flag0',
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone
+  });
+  return tl;
+}
+
+/***/ }),
+
+/***/ "./js/animations/heroStart.js":
+/*!************************************!*\
+  !*** ./js/animations/heroStart.js ***!
+  \************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ heroStart
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var _cloudAnimations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cloudAnimations */ "./js/animations/cloudAnimations.js");
+/* harmony import */ var _heroFlagAnimation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./heroFlagAnimation */ "./js/animations/heroFlagAnimation.js");
+/* harmony import */ var _heroTextAnimation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./heroTextAnimation */ "./js/animations/heroTextAnimation.js");
+
+
+
+ //animation to initialize the hero image
+//will have the mountain pop up and clouds pop down before animating upon load
+
+function heroStart() {
+  var cloudsTL = (0,_cloudAnimations__WEBPACK_IMPORTED_MODULE_0__.default)();
+  var flagTL = (0,_heroFlagAnimation__WEBPACK_IMPORTED_MODULE_1__.default)();
+  var textTL = (0,_heroTextAnimation__WEBPACK_IMPORTED_MODULE_2__.default)();
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_3__.gsap.timeline({
+    pause: true
+  });
+  cloudsTL.pause(6);
+  cloudsTL.play();
+  tl.add('start').fromTo(['#MountainGroup', '#FlagGroup', '#GoatGroup'], {
+    y: '+=400'
+  }, {
+    duration: 1,
+    y: '0'
+  }, 'start+=0.5').fromTo(['#Cloud2Group', '#Cloud3Group'], {
+    y: '-=500'
+  }, {
+    duration: 1,
+    y: '+=500',
+    stagger: 0.25
+  }, 'start+=1.5').add('end').add(flagTL.play(), 'end').add(textTL.play(), 'end+=0.25');
+  return tl;
+}
+
+/***/ }),
+
+/***/ "./js/animations/heroTextAnimation.js":
+/*!********************************************!*\
+  !*** ./js/animations/heroTextAnimation.js ***!
+  \********************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* export default binding */ __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  });
+  tl.add('start').fromTo('.heroText h1', {
+    y: '+=25',
+    opacity: 0
+  }, {
+    y: '-=25',
+    duration: 0.5,
+    opacity: 1
+  }, 'start').fromTo('.heroText h5', {
+    y: '+=25',
+    opacity: 0
+  }, {
+    y: '-=25',
+    duration: 0.5,
+    opacity: 1
+  }, 'start+=0.5').fromTo('.heroTextBtn', {
+    y: '+=25',
+    opacity: 0
+  }, {
+    y: '-=25',
+    duration: 0.5,
+    opacity: 1
+  }, 'start+=0.75');
   return tl;
 }
 
@@ -2606,13 +2849,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => /* binding */ heroInit
 /* harmony export */ });
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/gsap-core.js");
-/* harmony import */ var gsap_MorphSVGPlugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/MorphSVGPlugin */ "./node_modules/gsap/MorphSVGPlugin.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_MorphSVGPlugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap/MorphSVGPlugin */ "./node_modules/gsap/MorphSVGPlugin.js");
+/* harmony import */ var _animations_heroStart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./animations/heroStart */ "./js/animations/heroStart.js");
+
 
 
 function heroInit() {
-  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_MorphSVGPlugin__WEBPACK_IMPORTED_MODULE_1__.MorphSVGPlugin); //add an event listener to make the contact button grow when you hover it
+  gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.registerPlugin(gsap_MorphSVGPlugin__WEBPACK_IMPORTED_MODULE_2__.MorphSVGPlugin); //add an event listener to make the contact button grow when you hover it
 
   var btns = document.querySelectorAll('#heroContactButton, #middleContactButton, #contactContactButton');
   btns.forEach(function (btn) {
@@ -2622,108 +2866,20 @@ function heroInit() {
     btn.addEventListener('mouseleave', function () {
       btn.style.transform = 'scale(1)';
     });
-  }); //now start the clouds moving
+  }); //event listener to scroll to our contact section if hero contact button is clicked
 
-  initiateClouds(); //start the flag waving animation
+  document.querySelector('#heroContactButton button').addEventListener('click', function () {
+    document.querySelector('#Contact').scrollIntoView({
+      behavior: 'smooth'
+    });
+    toggleMenu();
+  });
+  var heroAni = (0,_animations_heroStart__WEBPACK_IMPORTED_MODULE_0__.default)();
 
-  flagAnimation();
-}
-
-function flagAnimation() {
-  var tl = new gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
-    repeat: -1
-  });
-  tl.add('animationStart');
-  tl.to('#Flag0', {
-    duration: 0.5,
-    morphSVG: '#Flag1',
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Linear.easeNone
-  });
-  tl.to('#Flag0', {
-    duration: 0.5,
-    morphSVG: '#Flag2',
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Linear.easeNone
-  });
-  tl.to('#Flag0', {
-    duration: 0.5,
-    morphSVG: '#Flag3',
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Linear.easeNone
-  });
-  tl.to('#Flag0', {
-    duration: 0.5,
-    morphSVG: '#Flag0',
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Linear.easeNone
-  });
-}
-
-function initiateClouds() {
-  /*
-  Cloud moving portion
-  */
-  var cloud1Len = document.querySelector('#Cloud1Group').clientWidth;
-  var cloud2Len = document.querySelector('#Cloud2Group').clientWidth;
-  var cloud3Len = document.querySelector('#Cloud3Group').clientWidth;
-  var tl = new gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({});
-  tl.add('cloudStart');
-  tl.to('#Cloud1Group', 40, {
-    x: window.innerWidth + cloud1Len,
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Linear.easeNone,
-    repeat: -1
-  }, 'cloudStart+=20');
-  tl.to('#Cloud2Group', 60, {
-    x: window.innerWidth + cloud2Len,
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Linear.easeNone,
-    repeat: -1
-  }, 'cloudStart-=10');
-  tl.to('#Cloud3Group', 30, {
-    x: window.innerWidth + cloud3Len,
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Linear.easeNone,
-    repeat: -1
-  }, 'cloudStart+=1');
-  tl.to('#Cloud4Group', 55, {
-    x: window.innerWidth + cloud3Len,
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Linear.easeNone,
-    repeat: -1
-  }, 'cloudStart+=20');
-  tl.to('#Cloud5Group', 45, {
-    x: window.innerWidth + cloud3Len,
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Linear.easeNone,
-    repeat: -1
-  }, 'cloudStart+=11'); //this makes the clouds bob up and down at different times
-
-  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.to('#Cloud1Group', 3, {
-    yoyo: true,
-    repeat: -1,
-    y: '+=20',
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Power1.easeInOut
-  });
-  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.to('#Cloud2Group', 6, {
-    yoyo: true,
-    repeat: -1,
-    y: '+=25',
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Power1.easeInOut
-  });
-  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.to('#Cloud3Group', 3, {
-    yoyo: true,
-    repeat: -1,
-    y: '+=15',
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Power1.easeInOut,
-    delay: 1.25
-  });
-  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.to('#Cloud4Group', 3, {
-    yoyo: true,
-    repeat: -1,
-    y: '+=15',
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Power1.easeInOut,
-    delay: 1.25
-  });
-  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.to('#Cloud5Group', 3, {
-    yoyo: true,
-    repeat: -1,
-    y: '+=15',
-    ease: gsap__WEBPACK_IMPORTED_MODULE_2__.Power1.easeInOut,
-    delay: 1.25
-  });
+  window.onload = function () {
+    //after load, make the items appear
+    heroAni.play();
+  };
 }
 
 /***/ }),
