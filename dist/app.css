@@ -975,8 +975,8 @@ video {
   opacity: 0;
 }
 
-.opacity-75 {
-  opacity: 0.75;
+.opacity-25 {
+  opacity: 0.25;
 }
 
 .overflow-x-hidden {
@@ -1124,12 +1124,6 @@ video {
   --text-opacity: 1;
   color: #FF4242;
   color: rgba(255, 66, 66, var(--text-opacity));
-}
-
-.text-green-600 {
-  --text-opacity: 1;
-  color: #558b79;
-  color: rgba(85, 139, 121, var(--text-opacity));
 }
 
 .text-green-700 {
