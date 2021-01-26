@@ -54,12 +54,6 @@ export default function contactInit() {
         var email = contactForm.querySelector('.contactEmail').value;
         var description = contactForm.querySelector('.contactDescription').value;
 
-        //first play the loading animation
-        loadingAnimations.running.play();
-    
-        //then swing the animation into view
-        loadingAnimations.submitClick.play();
-
         //run the submit function
         //internally, it will update and run animations if successful
         submitForm(firstName, lastName, email, description, toggleForm, loadingAnimations);

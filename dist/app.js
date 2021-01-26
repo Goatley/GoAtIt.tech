@@ -1992,6 +1992,28 @@ function _submitForm() {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            //first play the loading animation
+            loadingAnimations.running.play(); //then swing the animation into view
+
+            loadingAnimations.submitClick.play();
+            _context.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://api.goatit.tech/prod/submitcontact', {
+              firstName: fName,
+              lastName: lName,
+              email: contactEmail,
+              description: projectdesc
+            });
+
+          case 4:
+            res = _context.sent;
+            console.log(res); //if successful
+
+            if (!(res.status == '200')) {
+              _context.next = 12;
+              break;
+            }
+
+            //literally completes too fast usually... instead adding a one second pause, lol
             //first we want to play the 'loading' animation after click
             console.log('loading');
             setTimeout(function () {
@@ -2011,25 +2033,20 @@ function _submitForm() {
             }, 2000);
             return _context.abrupt("return");
 
-          case 5:
-            res = _context.sent;
-            console.log(res); //if successful
+          case 12:
+            console.log('oops... looks like we ran into an error');
+            loadingAnimations.onError.play();
+            loadingAnimations.onError.eventCallback('onComplete', function () {
+              return loadingAnimations.endAnimation.play();
+            });
+            loadingAnimations.endAnimation.eventCallback('onComplete', function () {
+              return toggleForm();
+            });
 
-            if (res.status == '200') {//literally completes too fast usually... instead adding a one second pause, lol
-            } else {
-              console.log('oops... looks like we ran into an error');
-              loadingAnimations.onError.play();
-              loadingAnimations.onError.eventCallback('onComplete', function () {
-                return loadingAnimations.endAnimation.play();
-              });
-              loadingAnimations.endAnimation.eventCallback('onComplete', function () {
-                return toggleForm();
-              });
-            }
-
+          case 16:
             return _context.abrupt("return", res);
 
-          case 9:
+          case 17:
           case "end":
             return _context.stop();
         }
@@ -2786,11 +2803,7 @@ function contactInit() {
     var firstName = contactForm.querySelector('.contactFirstName').value;
     var lastName = contactForm.querySelector('.contactLastName').value;
     var email = contactForm.querySelector('.contactEmail').value;
-    var description = contactForm.querySelector('.contactDescription').value; //first play the loading animation
-
-    loadingAnimations.running.play(); //then swing the animation into view
-
-    loadingAnimations.submitClick.play(); //run the submit function
+    var description = contactForm.querySelector('.contactDescription').value; //run the submit function
     //internally, it will update and run animations if successful
 
     (0,_functions_contactSubmit__WEBPACK_IMPORTED_MODULE_0__.default)(firstName, lastName, email, description, toggleForm, loadingAnimations);

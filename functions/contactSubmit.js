@@ -5,22 +5,12 @@ import axios from 'axios';
 //@param toggleForm holds the animation to close the form after submission
 //@param the rest are teh individual form inputs, aptly named 
 export default async function submitForm(fName, lName, contactEmail, projectdesc, toggleForm, loadingAnimations) {
-    //first we want to play the 'loading' animation after click
-    console.log('loading')
-
-    setTimeout(() => {
-        loadingAnimations.submitClick.pause();
-        //close the form
-        loadingAnimations.onSuccess.play();
-        loadingAnimations.onSuccess.eventCallback('onComplete', () => loadingAnimations.endAnimation.play());
-        loadingAnimations.endAnimation.eventCallback('onComplete', () => {
-            toggleForm();
-            setTimeout(() => loadingAnimations.restartAll(), 1000);
-        });
-        console.log('success!')
-    }, 2000);
-
-    return;
+    
+//first play the loading animation
+    loadingAnimations.running.play();
+        
+    //then swing the animation into view
+    loadingAnimations.submitClick.play();
 
 
     var res =  await axios.post(
@@ -38,7 +28,22 @@ export default async function submitForm(fName, lName, contactEmail, projectdesc
     //if successful
     if (res.status == '200') {
         //literally completes too fast usually... instead adding a one second pause, lol
-        
+            //first we want to play the 'loading' animation after click
+    console.log('loading')
+
+    setTimeout(() => {
+        loadingAnimations.submitClick.pause();
+        //close the form
+        loadingAnimations.onSuccess.play();
+        loadingAnimations.onSuccess.eventCallback('onComplete', () => loadingAnimations.endAnimation.play());
+        loadingAnimations.endAnimation.eventCallback('onComplete', () => {
+            toggleForm();
+            setTimeout(() => loadingAnimations.restartAll(), 1000);
+        });
+        console.log('success!')
+    }, 2000);
+
+    return;
     } else {
         console.log('oops... looks like we ran into an error')
         loadingAnimations.onError.play();
