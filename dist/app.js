@@ -1976,13 +1976,17 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+ //performs the form submission and controls the animations
+//@param loadingAnimations is an object that holds the animation timelines for the loading pieces after clicking submit
+//@param toggleForm holds the animation to close the form after submission
+//@param the rest are teh individual form inputs, aptly named 
 
-function submitForm(_x, _x2, _x3, _x4, _x5) {
+function submitForm(_x, _x2, _x3, _x4, _x5, _x6) {
   return _submitForm.apply(this, arguments);
 }
 
 function _submitForm() {
-  _submitForm = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(fName, lName, contactEmail, projectdesc, toggleForm) {
+  _submitForm = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(fName, lName, contactEmail, projectdesc, toggleForm, loadingAnimations) {
     var res;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -1990,29 +1994,42 @@ function _submitForm() {
           case 0:
             //first we want to play the 'loading' animation after click
             console.log('loading');
-            _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://api.goatit.tech/prod/submitcontact', {
-              firstName: fName,
-              lastName: lName,
-              email: contactEmail,
-              description: projectdesc
-            });
+            setTimeout(function () {
+              loadingAnimations.submitClick.pause(); //close the form
 
-          case 3:
+              loadingAnimations.onSuccess.play();
+              loadingAnimations.onSuccess.eventCallback('onComplete', function () {
+                return loadingAnimations.endAnimation.play();
+              });
+              loadingAnimations.endAnimation.eventCallback('onComplete', function () {
+                toggleForm();
+                setTimeout(function () {
+                  return loadingAnimations.restartAll();
+                }, 1000);
+              });
+              console.log('success!');
+            }, 2000);
+            return _context.abrupt("return");
+
+          case 5:
             res = _context.sent;
             console.log(res); //if successful
 
-            if (res.status == '200') {
-              //close the form
-              toggleForm();
-              console.log('success!');
+            if (res.status == '200') {//literally completes too fast usually... instead adding a one second pause, lol
             } else {
               console.log('oops... looks like we ran into an error');
+              loadingAnimations.onError.play();
+              loadingAnimations.onError.eventCallback('onComplete', function () {
+                return loadingAnimations.endAnimation.play();
+              });
+              loadingAnimations.endAnimation.eventCallback('onComplete', function () {
+                return toggleForm();
+              });
             }
 
             return _context.abrupt("return", res);
 
-          case 7:
+          case 9:
           case "end":
             return _context.stop();
         }
@@ -2020,6 +2037,179 @@ function _submitForm() {
     }, _callee);
   }));
   return _submitForm.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ "./js/animations/GoatRunningAnimation.js":
+/*!***********************************************!*\
+  !*** ./js/animations/GoatRunningAnimation.js ***!
+  \***********************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ GoatLoadingAni
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/gsap-core.js");
+
+
+
+function GoatLoadingAni() {
+  //this is the timeline that controls the actual running animation of the GOAT
+  var runningTL = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  }); //the timeline that launches other events when 'submit' is clicked
+
+  var submitClickTL = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  }); //the timeline that controls the ending animation on success
+
+  var successAnimation = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  }); //the timeline that controls the ending animation on failure
+
+  var errorAnimation = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  }); //shuts down and resets all animations
+
+  var endAnimation = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  }); //now try and set the transform origin for all pieces
+
+  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(['#RunningGoatGroup', '#SuccessGroup', '#ErrorGroup'], {
+    transformOrigin: '200px 400px',
+    rotate: '-90deg'
+  });
+  var runningDuration = 0.5;
+  runningTL.add('start').to('#RunningGoatGroup', {
+    duration: runningDuration,
+    y: '+=5%',
+    repeat: -1,
+    yoyo: true,
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone
+  }, 'start').to('#FFF', {
+    duration: runningDuration,
+    morphSVG: {
+      shape: '#FBF',
+      shapeIndex: 0
+    },
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone,
+    repeat: -1,
+    yoyo: true
+  }, 'start').to('#FFB', {
+    duration: runningDuration,
+    morphSVG: {
+      shape: '#FBB',
+      shapeIndex: 0
+    },
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone,
+    repeat: -1,
+    yoyo: true
+  }, 'start').to('#BFF', {
+    duration: runningDuration,
+    morphSVG: {
+      shape: '#BBF',
+      shapeIndex: 0
+    },
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone,
+    repeat: -1,
+    yoyo: true
+  }, 'start+=0.25').to('#BFB', {
+    duration: runningDuration,
+    morphSVG: {
+      shape: '#BBB',
+      shapeIndex: 0
+    },
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone,
+    repeat: -1,
+    yoyo: true
+  }, 'start+=0.25'); //now building the timeline for the transforms that happen when you click the submit button
+  //should morph the button to the goat and go from there
+
+  submitClickTL.add('start') //first display the overlay
+  .fromTo('#ContactSubmitOverlay', {
+    x: '100vw'
+  }, {
+    x: 0,
+    opacity: 0.25,
+    duration: 0.01
+  }, 'start').fromTo('#LoadingGoatCont', {
+    x: '100vw'
+  }, {
+    x: '-50%',
+    duration: 0.01
+  }, 'start').to('#RunningGoatGroup', {
+    rotate: '0deg',
+    duration: 0.5,
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Bounce.ease
+  }, 'start+=0.02');
+  successAnimation.add('start').to('#RunningGoatGroup', {
+    rotate: '90deg',
+    duration: 0.5
+  }, 'start').to('#SuccessGroup', {
+    rotate: '0deg',
+    duration: 0.5
+  }, 'start').fromTo('#SuccessGroup path', {
+    drawSVG: '0%'
+  }, {
+    duration: 0.5,
+    drawSVG: '100%'
+  }, 'start+=0.6').to('#SuccessGroup path', {
+    scale: 1.05,
+    duration: 0.25,
+    repeat: 3,
+    yoyo: true
+  }).to('#SuccessGroup', {
+    duration: 1,
+    opacity: 0
+  }, 'start+=2');
+  errorAnimation.add('start').to('#RunningGoatGroup', {
+    rotate: '90deg',
+    duration: 0.25
+  }, 'start').to('#ErrorGroup', {
+    rotate: '0',
+    duration: 0.25
+  }, 'start');
+  endAnimation.add('start').to('#LoadingGoatCont', {
+    opacity: 0,
+    duration: 0.25
+  }, 'start').to('#ContactSubmitOverlay', {
+    opacity: 0,
+    duration: 0.01
+  });
+
+  function restartAll() {
+    runningTL.invalidate().restart().pause();
+    submitClickTL.invalidate().restart().pause();
+    successAnimation.invalidate().restart().pause();
+    errorAnimation.invalidate().restart().pause(); //now reset the pieces for the next animation load
+
+    gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(['#RunningGoatGroup', '#SuccessGroup', '#ErrorGroup'], {
+      rotate: '-90deg',
+      opacity: 1,
+      scale: 1
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(['#ContactSubmitOverlay', '#LoadingGoatCont'], {
+      x: '100vw',
+      opacity: 1
+    });
+  }
+
+  return {
+    running: runningTL,
+    submitClick: submitClickTL,
+    onSuccess: successAnimation,
+    onError: errorAnimation,
+    endAnimation: endAnimation,
+    restartAll: restartAll
+  };
 }
 
 /***/ }),
@@ -2413,7 +2603,7 @@ __webpack_require__.r(__webpack_exports__);
     y: '-=25',
     duration: 0.5,
     opacity: 1
-  }, 'start+=0.75');
+  }, 'start+=0.5');
   return tl;
 }
 
@@ -2541,10 +2731,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => /* binding */ contactInit
 /* harmony export */ });
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 /* harmony import */ var _functions_contactSubmit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../functions/contactSubmit */ "./functions/contactSubmit.js");
+/* harmony import */ var _animations_GoatRunningAnimation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./animations/GoatRunningAnimation */ "./js/animations/GoatRunningAnimation.js");
 
-;
+ //importing the loading animations here
+
 
 function contactInit() {
   //state variable to determine if the contact form is open or not
@@ -2559,7 +2751,8 @@ function contactInit() {
 
   var openFormAni = buildTimeline();
   var submitHoverAni = buildSubmitHoverTL();
-  var closeHoverAni = buildCloseHoverTL(); //establish event listeners to open/close form
+  var closeHoverAni = buildCloseHoverTL();
+  var loadingAnimations = (0,_animations_GoatRunningAnimation__WEBPACK_IMPORTED_MODULE_1__.default)(); //establish event listeners to open/close form
 
   contactOpenBtn.addEventListener('click', function () {
     return toggleForm();
@@ -2593,10 +2786,14 @@ function contactInit() {
     var firstName = contactForm.querySelector('.contactFirstName').value;
     var lastName = contactForm.querySelector('.contactLastName').value;
     var email = contactForm.querySelector('.contactEmail').value;
-    var description = contactForm.querySelector('.contactDescription').value; //run the submit function
+    var description = contactForm.querySelector('.contactDescription').value; //first play the loading animation
+
+    loadingAnimations.running.play(); //then swing the animation into view
+
+    loadingAnimations.submitClick.play(); //run the submit function
     //internally, it will update and run animations if successful
 
-    (0,_functions_contactSubmit__WEBPACK_IMPORTED_MODULE_0__.default)(firstName, lastName, email, description, toggleForm);
+    (0,_functions_contactSubmit__WEBPACK_IMPORTED_MODULE_0__.default)(firstName, lastName, email, description, toggleForm, loadingAnimations);
   }); //close button transitions
 
   contactCloseBtn.addEventListener('mouseenter', function () {
@@ -2618,7 +2815,7 @@ function contactInit() {
 
 
   function buildTimeline() {
-    var tl = gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.timeline({
+    var tl = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.timeline({
       paused: true
     });
     tl.add('start').fromTo(contactForm, {
@@ -2638,23 +2835,26 @@ function contactInit() {
       opacity: 0.5
     }, 'start');
     return tl;
-  }
+  } //controls the animation of the submit button ON HOVER
+
 
   function buildSubmitHoverTL() {
-    var tl = gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.timeline({
+    var tl = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.timeline({
       paused: true
     });
-    tl.to(contactSubmitBtn, {
+    tl.add('start').to(contactSubmitBtn, {
       duration: 0.1,
-      scale: 1.1,
-      backgroundColor: '#FF4242',
+      scale: 1.1
+    }, 'start').to('#contactFormSubmit', {
+      duration: 0.1,
+      backgroundColor: '#ff4242',
       color: '#ffffff'
-    });
+    }, 'start');
     return tl;
   }
 
   function buildCloseHoverTL() {
-    var tl = gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.timeline({
+    var tl = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.timeline({
       paused: true
     });
     tl.to(contactCloseBtn, {
@@ -2872,7 +3072,6 @@ function heroInit() {
     document.querySelector('#Contact').scrollIntoView({
       behavior: 'smooth'
     });
-    toggleMenu();
   });
   var heroAni = (0,_animations_heroStart__WEBPACK_IMPORTED_MODULE_0__.default)();
 

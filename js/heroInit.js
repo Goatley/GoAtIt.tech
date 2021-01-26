@@ -20,7 +20,7 @@ export default function heroInit() {
     })
 
     //event listener to scroll to our contact section if hero contact button is clicked
-    document.querySelector('#heroContactButton button').addEventListener('click', () => {document.querySelector('#Contact').scrollIntoView({behavior: 'smooth'}); toggleMenu();})
+    document.querySelector('#heroContactButton button').addEventListener('click', () => {document.querySelector('#Contact').scrollIntoView({behavior: 'smooth'})})
 
     var heroAni = heroStart();
 

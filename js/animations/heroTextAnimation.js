@@ -28,7 +28,7 @@ export default function() {
             y: '-=25',
             duration: 0.5,
             opacity: 1,
-        }, 'start+=0.75')
+        }, 'start+=0.5')
 
     return tl;
 }

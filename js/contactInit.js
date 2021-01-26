@@ -1,5 +1,8 @@
-import { gsap } from 'gsap';;
-import submitForm from '../functions/contactSubmit'
+import { gsap } from 'gsap';
+import submitForm from '../functions/contactSubmit';
+
+//importing the loading animations here
+import GoatLoadingAni from './animations/GoatRunningAnimation';
 
 export default function contactInit() {
     //state variable to determine if the contact form is open or not
@@ -17,6 +20,7 @@ export default function contactInit() {
     var openFormAni = buildTimeline();
     var submitHoverAni = buildSubmitHoverTL();
     var closeHoverAni = buildCloseHoverTL();
+    var loadingAnimations = GoatLoadingAni();
 
     //establish event listeners to open/close form
     contactOpenBtn.addEventListener('click', () => toggleForm());
@@ -50,9 +54,15 @@ export default function contactInit() {
         var email = contactForm.querySelector('.contactEmail').value;
         var description = contactForm.querySelector('.contactDescription').value;
 
+        //first play the loading animation
+        loadingAnimations.running.play();
+    
+        //then swing the animation into view
+        loadingAnimations.submitClick.play();
+
         //run the submit function
         //internally, it will update and run animations if successful
-        submitForm(firstName, lastName, email, description, toggleForm);
+        submitForm(firstName, lastName, email, description, toggleForm, loadingAnimations);
 
     })
 
@@ -107,16 +117,23 @@ export default function contactInit() {
         return tl;
     }
 
+
+    //controls the animation of the submit button ON HOVER
     function buildSubmitHoverTL() {
         var tl = gsap.timeline({paused: true});
 
         tl
+            .add('start')
             .to(contactSubmitBtn, {
                 duration: 0.1,
                 scale: 1.1,
-                backgroundColor: '#FF4242',
+            }, 'start')
+            .to('#contactFormSubmit', {
+                duration: 0.1,
+                backgroundColor: '#ff4242',
                 color: '#ffffff'
-            })
+            }, 'start')
+
 
 
         return tl;
