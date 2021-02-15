@@ -66,6 +66,57 @@ body {
     line-height: 1.3;
   }
 
+  //change the selection color
+::-moz-selection { /* Code for Firefox */
+  color: #467263;
+  background: #e6efec;
+}
+
+::selection {
+  color: #467263;
+  background: #e6efec;
+}
+
+
+//anything with a green bg highlights differently
+.heroCont h1::-moz-selection, 
+.heroCont h2::-moz-selection, 
+.heroCont span::-moz-selection,
+.getCardExpander h3::-moz-selection,
+.getCardExpander p::-moz-selection,
+.getCardExpander span::-moz-selection,
+.midContact h3::-moz-selection, 
+.includeItem h3::-moz-selection, 
+.includeItem p::-moz-selection, 
+.includeItem span::-moz-selection, 
+#Contact h2::-moz-selection, 
+#Contact h3::-moz-selection, 
+#Contact p::-moz-selection, 
+#Contact span::-moz-selection, 
+#Contact h4::-moz-selection  { /* Code for Firefox */
+  color: #FF4242;
+  background: white;
+}
+
+.heroCont h1::selection, 
+.heroCont h2::selection, 
+.heroCont span::selection, 
+.getCardExpander h3::selection, 
+.getCardExpander p::selection, 
+.getCardExpander span::selection, 
+.midContact h3::selection, 
+.includeItem h3::selection, 
+.includeItem p::selection, 
+.includeItem span::selection, 
+#Contact h2::selection, 
+#Contact h3::selection, 
+#Contact p::selection, 
+#Contact span::selection, 
+#Contact h4::selection  {
+  color: #FF4242;
+  background: white;
+}
+
   /* h1 {
   margin-top: 0;
   font-size: 2.488rem;

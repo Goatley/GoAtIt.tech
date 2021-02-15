@@ -70,7 +70,8 @@ module.exports = {
         '3/4': '75%',
         '1/3': '33%',
         '2/3': '66%',
-        'h-60': '15rem'
+        'h-60': '15rem',
+        'card': '10rem'
       },
       minHeight: {
         '100': '100px',
@@ -81,6 +82,9 @@ module.exports = {
       },
       spacing: {
         nav: '80px',
+      },
+      boxShadow: {
+        card: '2px 2px 2px 1px rgba(67,68,69,0.2)'
       }
     },
   },
