@@ -1518,6 +1518,27 @@ small, .text_small {
   }
 }
 
+@media only screen and (min-width: 769px) {
+  body::-webkit-scrollbar, div::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  body, div {
+    scrollbar-width: thin;
+    scrollbar-color: #d1e3dd white;
+  }
+
+  body::-webkit-scrollbar-track, div::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  body::-webkit-scrollbar-thumb, div::-webkit-scrollbar-thumb {
+    background-color: #d1e3dd;
+    border-radius: 6px;
+    border: 2px solid white;
+  }
+}
+
 /* @import '../styles/get.css';
 @import '../styles/includeSection.css';
 @import '../styles/contact.css'; */

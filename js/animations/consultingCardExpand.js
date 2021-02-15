@@ -31,7 +31,7 @@ export function desktopCardExpand(card) {
     //set the transform origin of the card descriptions that are initiall hidden
     gsap.set(card.querySelector('.cardDescExpanded'), {
         transformOrigin: 'top left',
-        y: '70px',
+        // y: '70px',
         x: '20px',
     })
 

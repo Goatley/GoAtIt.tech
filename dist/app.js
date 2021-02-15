@@ -2390,7 +2390,7 @@ function desktopCardExpand(card) {
 
   gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(card.querySelector('.cardDescExpanded'), {
     transformOrigin: 'top left',
-    y: '70px',
+    // y: '70px',
     x: '20px'
   }); //duration of animation
 
