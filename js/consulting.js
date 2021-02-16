@@ -1,5 +1,7 @@
 import { desktopCardExpand, fadeCards, unfadeCards, mouseEnterEVNT, mouseLeaveEVNT, mobileCardExpand, scrollListener, closeMobileCard } from './animations/consultingCardExpand';
 
+import { apiAnimation, rocketShipAnimation, cloudInfraAni } from './animations/consultingCategoryAnimations';
+
 export default function consultingInit() {
 
     //first determine screen size
@@ -24,6 +26,18 @@ export default function consultingInit() {
         //determines mobile or not mobile
         wwidth.matches ? card.expandAni = null :
         card.expandAni = desktopCardExpand(card);
+
+        switch(card.index) {
+            case 0:
+                card.svgAnimation = apiAnimation();
+                break
+            case 3:
+                card.svgAnimation = cloudInfraAni();
+                break
+            case 5:
+                card.svgAnimation = rocketShipAnimation();
+                break
+        }
     })
 
     //add a listener to close the mobile card if it's clicked
@@ -45,8 +59,14 @@ export default function consultingInit() {
         :
         //DESKTOP 
         (
-            card.addEventListener('mouseenter', () => mouseEnterEVNT(card, card.index == cardState.activeCard)),
-            card.addEventListener('mouseleave', () => mouseLeaveEVNT(card, card.index == cardState.activeCard))
+            card.addEventListener('mouseenter', () => {
+                mouseEnterEVNT(card, card.index == cardState.activeCard)
+                card.svgAnimation?.play();
+            }),
+            card.addEventListener('mouseleave', () => {
+                mouseLeaveEVNT(card, card.index == cardState.activeCard)
+                card.index == cardState.activeCard ? null : card.svgAnimation?.restart().pause();
+            })
         )
         //now we need the actual click events
         card.addEventListener('click', () => {

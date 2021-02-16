@@ -2545,6 +2545,26 @@ function scrollListener(card) {
       trigger: card,
       start: 'top 55%',
       end: 'top 35%',
+      onEnter: function onEnter() {
+        var _card$svgAnimation;
+
+        return (_card$svgAnimation = card.svgAnimation) === null || _card$svgAnimation === void 0 ? void 0 : _card$svgAnimation.play();
+      },
+      onEnterBack: function onEnterBack() {
+        var _card$svgAnimation2;
+
+        return (_card$svgAnimation2 = card.svgAnimation) === null || _card$svgAnimation2 === void 0 ? void 0 : _card$svgAnimation2.play();
+      },
+      onLeave: function onLeave() {
+        var _card$svgAnimation3;
+
+        return (_card$svgAnimation3 = card.svgAnimation) === null || _card$svgAnimation3 === void 0 ? void 0 : _card$svgAnimation3.restart().pause();
+      },
+      onLeaveBack: function onLeaveBack() {
+        var _card$svgAnimation4;
+
+        return (_card$svgAnimation4 = card.svgAnimation) === null || _card$svgAnimation4 === void 0 ? void 0 : _card$svgAnimation4.restart().pause();
+      },
       toggleActions: 'play reverse play reverse'
     }
   });
@@ -2560,6 +2580,137 @@ function scrollListener(card) {
       toggleActions: 'play reverse play reverse'
     }
   });
+}
+
+/***/ }),
+
+/***/ "./js/animations/consultingCategoryAnimations.js":
+/*!*******************************************************!*\
+  !*** ./js/animations/consultingCategoryAnimations.js ***!
+  \*******************************************************/
+/*! namespace exports */
+/*! export apiAnimation [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export cloudInfraAni [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export rocketShipAnimation [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "apiAnimation": () => /* binding */ apiAnimation,
+/* harmony export */   "rocketShipAnimation": () => /* binding */ rocketShipAnimation,
+/* harmony export */   "cloudInfraAni": () => /* binding */ cloudInfraAni
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/gsap-core.js");
+
+function apiAnimation() {
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  });
+  var svg = document.querySelector('#consultingAPISVG');
+  var bulbTL = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  });
+  bulbTL.add('start').to('.apiLightBulb', {
+    duration: 0.05,
+    fill: '#F7FA5C'
+  }).to('.apiLightBulb', {
+    duration: 0.05,
+    fill: 'none'
+  }).to('.apiLightBulb', {
+    duration: 0.05,
+    fill: '#F7FA5C'
+  }).to('.apiLightBulb', {
+    duration: 0.05,
+    fill: 'none'
+  }).to('.apiLightBulb', {
+    duration: 0.05,
+    fill: '#F7FA5C'
+  });
+  tl.add('start').to('#left_plug', {
+    duration: 0.2,
+    transform: 'translate(5px, -2.5px)'
+  }, 'start').to('#right_plug', {
+    duration: 0.2,
+    transform: 'translate(-4.5px, 2px) rotate(2deg)'
+  }, 'start').add(bulbTL.play());
+  return tl;
+}
+function rocketShipAnimation() {
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  });
+  var shipTL = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true,
+    yoyo: true,
+    repeat: -1
+  });
+  var smokeTL = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true,
+    repeat: -1
+  });
+  var shipShake = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true,
+    repeat: -1
+  });
+  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set('#rocket_ship', {
+    transformOrigin: '50% 50%'
+  });
+  shipShake.to('#rocket_ship', {
+    duration: 0.1,
+    rotate: '1deg'
+  }).to('#rocket_ship', {
+    duration: 0.1,
+    rotate: '-1deg'
+  });
+  shipTL.add('start').to('.rocketSVG', {
+    duration: 0.5,
+    x: '10',
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone
+  }, 'start').to('.rocketSVG', {
+    duration: 0.5,
+    x: 0,
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone
+  }, 'start+0.5').to('.rocketSVG', {
+    duration: 0.5,
+    x: -10,
+    ease: gsap__WEBPACK_IMPORTED_MODULE_1__.Linear.easeNone
+  }, 'start+1');
+  smokeTL.add('start').to('.smoke', {
+    duration: 0.5,
+    y: '+=100',
+    opacity: 1,
+    stagger: 0.2
+  }, 'start').to('.smoke', {
+    duration: 0.5,
+    opacity: 0,
+    stagger: 0.2
+  }, 'start+=0.5');
+  tl.add('start').add(shipTL.play(), 'start').add(smokeTL.play(), 'start').add(shipShake.play(), 'start');
+  return tl;
+}
+function cloudInfraAni() {
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true,
+    repeat: -1
+  });
+  tl.add('start').fromTo('#cloudArrowSVG', {
+    y: 0
+  }, {
+    duration: 1,
+    fill: '#FF4242',
+    y: -50
+  }, 'start').to('#cloudOutlineSVG', {
+    duration: 1,
+    fill: '#FF4242'
+  }, 'start').to({}, {
+    duration: 1
+  }); // .addPause(0.5)
+
+  return tl;
 }
 
 /***/ }),
@@ -2987,6 +3138,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => /* binding */ consultingInit
 /* harmony export */ });
 /* harmony import */ var _animations_consultingCardExpand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./animations/consultingCardExpand */ "./js/animations/consultingCardExpand.js");
+/* harmony import */ var _animations_consultingCategoryAnimations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./animations/consultingCategoryAnimations */ "./js/animations/consultingCategoryAnimations.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2998,6 +3150,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 function consultingInit() {
@@ -3018,6 +3171,20 @@ function consultingInit() {
     card.index = index; //determines mobile or not mobile
 
     wwidth.matches ? card.expandAni = null : card.expandAni = (0,_animations_consultingCardExpand__WEBPACK_IMPORTED_MODULE_0__.desktopCardExpand)(card);
+
+    switch (card.index) {
+      case 0:
+        card.svgAnimation = (0,_animations_consultingCategoryAnimations__WEBPACK_IMPORTED_MODULE_1__.apiAnimation)();
+        break;
+
+      case 3:
+        card.svgAnimation = (0,_animations_consultingCategoryAnimations__WEBPACK_IMPORTED_MODULE_1__.cloudInfraAni)();
+        break;
+
+      case 5:
+        card.svgAnimation = (0,_animations_consultingCategoryAnimations__WEBPACK_IMPORTED_MODULE_1__.rocketShipAnimation)();
+        break;
+    }
   }); //add a listener to close the mobile card if it's clicked
 
   document.querySelector('.mobileCardOverlay').addEventListener('click', function () {
@@ -3034,9 +3201,15 @@ function consultingInit() {
     wwidth.matches ? //MOBILE
     (0,_animations_consultingCardExpand__WEBPACK_IMPORTED_MODULE_0__.scrollListener)(card) : ( //DESKTOP 
     card.addEventListener('mouseenter', function () {
-      return (0,_animations_consultingCardExpand__WEBPACK_IMPORTED_MODULE_0__.mouseEnterEVNT)(card, card.index == cardState.activeCard);
+      var _card$svgAnimation;
+
+      (0,_animations_consultingCardExpand__WEBPACK_IMPORTED_MODULE_0__.mouseEnterEVNT)(card, card.index == cardState.activeCard);
+      (_card$svgAnimation = card.svgAnimation) === null || _card$svgAnimation === void 0 ? void 0 : _card$svgAnimation.play();
     }), card.addEventListener('mouseleave', function () {
-      return (0,_animations_consultingCardExpand__WEBPACK_IMPORTED_MODULE_0__.mouseLeaveEVNT)(card, card.index == cardState.activeCard);
+      var _card$svgAnimation2;
+
+      (0,_animations_consultingCardExpand__WEBPACK_IMPORTED_MODULE_0__.mouseLeaveEVNT)(card, card.index == cardState.activeCard);
+      card.index == cardState.activeCard ? null : (_card$svgAnimation2 = card.svgAnimation) === null || _card$svgAnimation2 === void 0 ? void 0 : _card$svgAnimation2.restart().pause();
     })); //now we need the actual click events
 
     card.addEventListener('click', function () {

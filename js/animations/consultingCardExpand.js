@@ -221,6 +221,10 @@ export function scrollListener(card) {
             trigger: card,
             start: 'top 55%',
             end: 'top 35%',
+            onEnter: () => card.svgAnimation?.play(),
+            onEnterBack: () => card.svgAnimation?.play(),
+            onLeave: () => card.svgAnimation?.restart().pause(),
+            onLeaveBack: () => card.svgAnimation?.restart().pause(),
             toggleActions: 'play reverse play reverse'
         }
     });
