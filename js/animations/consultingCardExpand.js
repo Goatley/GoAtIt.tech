@@ -126,7 +126,7 @@ export function closeMobileCard() {
     
     gsap.to('.mobileExpandedCard', {
         duration: aniDuration,
-        x: '+=100vw'
+        x: '-=100vw'
     });
     gsap.to('.mobileCardOverlay', {
         duration: aniDuration / 2,
@@ -212,6 +212,10 @@ export function mouseLeaveEVNT(card, active) {
 export function scrollListener(card) {
     
     gsap.registerPlugin(ScrollTrigger);
+
+    gsap.set([card.querySelector('.consultingCardImg'), card.querySelector('p')], {
+        willChange: 'transform'
+    });
 
     gsap.to(card.querySelector('.consultingCardImg'), {
         duration: 0.2,
