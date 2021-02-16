@@ -126,7 +126,7 @@ export function closeMobileCard() {
     
     gsap.to('.mobileExpandedCard', {
         duration: aniDuration,
-        x: '100vw'
+        x: '+=100vw'
     });
     gsap.to('.mobileCardOverlay', {
         duration: aniDuration / 2,
