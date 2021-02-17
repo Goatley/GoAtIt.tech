@@ -11,6 +11,8 @@ export default async function submitForm(fName, lName, contactEmail, projectdesc
         
     //then swing the animation into view
     loadingAnimations.submitClick.play();
+
+    //play the animation to shrink the form to nothing
     formSubmitcomplete.play();
 
 
@@ -23,14 +25,20 @@ export default async function submitForm(fName, lName, contactEmail, projectdesc
             email: contactEmail,
             description: projectdesc,
         }
-    )
-
-    // console.log(res);
+    ).catch(error => {
+        console.log('oops... looks like we ran into an error')
+        console.log(error.message)
+        //first we want to play the 'loading' animation after click
+        loadingAnimations.submitClick.pause();
+        loadingAnimations.onError.play();
+        loadingAnimations.onError.eventCallback('onComplete', () => {
+            setTimeout(() => loadingAnimations.endAnimation.play(), 2000);
+        });
+        loadingAnimations.endAnimation.eventCallback('onComplete', () => toggleForm());
+    })
 
     //if successful
     if (res.status == '200') {
-
-        
         //first change the button text to open the form to 'thank you'
         document.querySelector('#contactOpenBtn').innerHTML = 'Thank you!'
 
@@ -52,11 +60,6 @@ export default async function submitForm(fName, lName, contactEmail, projectdesc
                 }, 1000);
             });
         }, 1000);
-    } else {
-        console.log('oops... looks like we ran into an error')
-        loadingAnimations.onError.play();
-        loadingAnimations.onError.eventCallback('onComplete', () => loadingAnimations.endAnimation.play());
-        loadingAnimations.endAnimation.eventCallback('onComplete', () => toggleForm());
     }
 
     return res;

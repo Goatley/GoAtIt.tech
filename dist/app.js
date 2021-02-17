@@ -1995,7 +1995,8 @@ function _submitForm() {
             //first play the loading animation
             loadingAnimations.running.play(); //then swing the animation into view
 
-            loadingAnimations.submitClick.play();
+            loadingAnimations.submitClick.play(); //play the animation to shrink the form to nothing
+
             formSubmitcomplete.play();
             _context.next = 5;
             return axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://api.goatit.tech/prod/submitcontact', {
@@ -2003,12 +2004,25 @@ function _submitForm() {
               lastName: lName,
               email: contactEmail,
               description: projectdesc
+            })["catch"](function (error) {
+              console.log('oops... looks like we ran into an error');
+              console.log(error.message); //first we want to play the 'loading' animation after click
+
+              loadingAnimations.submitClick.pause();
+              loadingAnimations.onError.play();
+              loadingAnimations.onError.eventCallback('onComplete', function () {
+                setTimeout(function () {
+                  return loadingAnimations.endAnimation.play();
+                }, 2000);
+              });
+              loadingAnimations.endAnimation.eventCallback('onComplete', function () {
+                return toggleForm();
+              });
             });
 
           case 5:
             res = _context.sent;
 
-            // console.log(res);
             //if successful
             if (res.status == '200') {
               //first change the button text to open the form to 'thank you'
@@ -2031,15 +2045,6 @@ function _submitForm() {
                   }, 1000);
                 });
               }, 1000);
-            } else {
-              console.log('oops... looks like we ran into an error');
-              loadingAnimations.onError.play();
-              loadingAnimations.onError.eventCallback('onComplete', function () {
-                return loadingAnimations.endAnimation.play();
-              });
-              loadingAnimations.endAnimation.eventCallback('onComplete', function () {
-                return toggleForm();
-              });
             }
 
             return _context.abrupt("return", res);
