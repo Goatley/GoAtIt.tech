@@ -23,13 +23,13 @@ export default async function submitForm(fName, lName, contactEmail, projectdesc
         }
     )
 
-    console.log(res);
+    // console.log(res);
 
     //if successful
     if (res.status == '200') {
         //literally completes too fast usually... instead adding a one second pause, lol
             //first we want to play the 'loading' animation after click
-    console.log('loading')
+    // console.log('loading')
 
     setTimeout(() => {
         loadingAnimations.submitClick.pause();
@@ -37,8 +37,15 @@ export default async function submitForm(fName, lName, contactEmail, projectdesc
         loadingAnimations.onSuccess.play();
         loadingAnimations.onSuccess.eventCallback('onComplete', () => loadingAnimations.endAnimation.play());
         loadingAnimations.endAnimation.eventCallback('onComplete', () => {
+            //change the button text
+            document.querySelector('#contactOpenBtn').innerHTML = 'Thank you!'
             toggleForm();
             setTimeout(() => loadingAnimations.restartAll(), 1000);
+            //now remoove the form completely for no second submission
+            setTimeout(() => {
+                document.body.removeChild(document.querySelector('#contactForm'));
+                document.body.removeChild(document.querySelector('#contactOverlay'));
+            }, 2000);
         });
         console.log('success!')
     }, 2000);
