@@ -1981,12 +1981,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //@param toggleForm holds the animation to close the form after submission
 //@param the rest are teh individual form inputs, aptly named 
 
-function submitForm(_x, _x2, _x3, _x4, _x5, _x6) {
+function submitForm(_x, _x2, _x3, _x4, _x5, _x6, _x7) {
   return _submitForm.apply(this, arguments);
 }
 
 function _submitForm() {
-  _submitForm = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(fName, lName, contactEmail, projectdesc, toggleForm, loadingAnimations) {
+  _submitForm = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(fName, lName, contactEmail, projectdesc, toggleForm, loadingAnimations, formSubmitcomplete) {
     var res;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -1996,7 +1996,8 @@ function _submitForm() {
             loadingAnimations.running.play(); //then swing the animation into view
 
             loadingAnimations.submitClick.play();
-            _context.next = 4;
+            formSubmitcomplete.play();
+            _context.next = 5;
             return axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://api.goatit.tech/prod/submitcontact', {
               firstName: fName,
               lastName: lName,
@@ -2004,55 +2005,46 @@ function _submitForm() {
               description: projectdesc
             });
 
-          case 4:
+          case 5:
             res = _context.sent;
 
-            if (!(res.status == '200')) {
-              _context.next = 10;
-              break;
-            }
+            // console.log(res);
+            //if successful
+            if (res.status == '200') {
+              //first change the button text to open the form to 'thank you'
+              document.querySelector('#contactOpenBtn').innerHTML = 'Thank you!'; //literally completes too fast usually... instead adding a one second pause, lol
 
-            //literally completes too fast usually... instead adding a one second pause, lol
-            //first we want to play the 'loading' animation after click
-            // console.log('loading')
-            setTimeout(function () {
-              loadingAnimations.submitClick.pause(); //close the form
+              setTimeout(function () {
+                //first we want to play the 'loading' animation after click
+                loadingAnimations.submitClick.pause(); //close the form
 
-              loadingAnimations.onSuccess.play();
-              loadingAnimations.onSuccess.eventCallback('onComplete', function () {
+                loadingAnimations.onSuccess.play();
+                loadingAnimations.onSuccess.eventCallback('onComplete', function () {
+                  return loadingAnimations.endAnimation.play();
+                });
+                loadingAnimations.endAnimation.eventCallback('onComplete', function () {
+                  toggleForm(); //wait for the form to dissapear, then remove it
+
+                  setTimeout(function () {
+                    document.body.removeChild(document.querySelector('#contactForm'));
+                    document.body.removeChild(document.querySelector('#contactOverlay'));
+                  }, 1000);
+                });
+              }, 1000);
+            } else {
+              console.log('oops... looks like we ran into an error');
+              loadingAnimations.onError.play();
+              loadingAnimations.onError.eventCallback('onComplete', function () {
                 return loadingAnimations.endAnimation.play();
               });
               loadingAnimations.endAnimation.eventCallback('onComplete', function () {
-                //change the button text
-                document.querySelector('#contactOpenBtn').innerHTML = 'Thank you!';
-                toggleForm();
-                setTimeout(function () {
-                  return loadingAnimations.restartAll();
-                }, 1000); //now remoove the form completely for no second submission
-
-                setTimeout(function () {
-                  document.body.removeChild(document.querySelector('#contactForm'));
-                  document.body.removeChild(document.querySelector('#contactOverlay'));
-                }, 2000);
+                return toggleForm();
               });
-              console.log('success!');
-            }, 2000);
-            return _context.abrupt("return");
+            }
 
-          case 10:
-            console.log('oops... looks like we ran into an error');
-            loadingAnimations.onError.play();
-            loadingAnimations.onError.eventCallback('onComplete', function () {
-              return loadingAnimations.endAnimation.play();
-            });
-            loadingAnimations.endAnimation.eventCallback('onComplete', function () {
-              return toggleForm();
-            });
-
-          case 14:
             return _context.abrupt("return", res);
 
-          case 15:
+          case 8:
           case "end":
             return _context.stop();
         }
@@ -2157,13 +2149,14 @@ function GoatLoadingAni() {
   //should morph the button to the goat and go from there
 
   submitClickTL.add('start') //first display the overlay
-  .fromTo('#ContactSubmitOverlay', {
-    x: '100vw'
-  }, {
-    x: 0,
-    opacity: 0.25,
-    duration: 0.01
-  }, 'start').fromTo('#LoadingGoatCont', {
+  // .fromTo('#ContactSubmitOverlay', {
+  //     x: '100vw',
+  // }, {
+  //     x: 0,
+  //     opacity: 0.25,
+  //     duration: 0.01,
+  // }, 'start')
+  .fromTo('#LoadingGoatCont', {
     x: '100vw'
   }, {
     x: '-50%',
@@ -2203,10 +2196,10 @@ function GoatLoadingAni() {
   endAnimation.add('start').to('#LoadingGoatCont', {
     opacity: 0,
     duration: 0.25
-  }, 'start').to('#ContactSubmitOverlay', {
-    opacity: 0,
-    duration: 0.01
-  });
+  }, 'start'); // .to('#ContactSubmitOverlay', {
+  //     opacity: 0,
+  //     duration: 0.01
+  // })
 
   function restartAll() {
     runningTL.invalidate().restart().pause();
@@ -2219,7 +2212,7 @@ function GoatLoadingAni() {
       opacity: 1,
       scale: 1
     });
-    gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(['#ContactSubmitOverlay', '#LoadingGoatCont'], {
+    gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set('#LoadingGoatCont', {
       x: '100vw',
       opacity: 1
     });
@@ -3131,6 +3124,96 @@ function navMobileToggleAnimation() {
 
 /***/ }),
 
+/***/ "./js/animations/submitAnimations.js":
+/*!*******************************************!*\
+  !*** ./js/animations/submitAnimations.js ***!
+  \*******************************************/
+/*! namespace exports */
+/*! export buildCloseHoverTL [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export buildFormSubmitComplete [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export buildFormTimeline [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export buildSubmitHoverTL [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "buildFormTimeline": () => /* binding */ buildFormTimeline,
+/* harmony export */   "buildSubmitHoverTL": () => /* binding */ buildSubmitHoverTL,
+/* harmony export */   "buildCloseHoverTL": () => /* binding */ buildCloseHoverTL,
+/* harmony export */   "buildFormSubmitComplete": () => /* binding */ buildFormSubmitComplete
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+ //builds the animation timeline to show the form
+
+function buildFormTimeline() {
+  var contactForm = document.querySelector('#contactForm');
+  var overlay = document.querySelector('#contactOverlay');
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  });
+  tl.add('start').fromTo(contactForm, {
+    y: '100%'
+  }, {
+    duration: 0.5,
+    y: '-50%'
+  }, 'start').fromTo(overlay, {
+    y: '-100vh'
+  }, {
+    y: 0,
+    duration: 0.01
+  }, 'start').fromTo(overlay, {
+    opacity: 0
+  }, {
+    duration: 0.5,
+    opacity: 0.5
+  }, 'start');
+  return tl;
+} //controls the animation of the submit button ON HOVER
+
+function buildSubmitHoverTL() {
+  var contactSubmitBtn = contactForm.querySelector('#contactFormSubmit');
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  });
+  tl.add('start').to(contactSubmitBtn, {
+    duration: 0.1,
+    scale: 1.1
+  }, 'start').to('#contactFormSubmit', {
+    duration: 0.1,
+    backgroundColor: '#ff4242',
+    color: '#ffffff'
+  }, 'start');
+  return tl;
+}
+function buildCloseHoverTL() {
+  var contactCloseBtn = contactForm.querySelector('#contactFormClose');
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  });
+  tl.to(contactCloseBtn, {
+    duration: 0.1,
+    color: '#FF4242'
+  });
+  return tl;
+}
+function buildFormSubmitComplete() {
+  var contactForm = document.querySelector('#contactForm');
+  var overlay = document.querySelector('#contactOverlay');
+  var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({
+    paused: true
+  });
+  tl.add('start').to(contactForm, {
+    duration: 0.5,
+    scale: 0
+  });
+  return tl;
+}
+
+/***/ }),
+
 /***/ "./js/consulting.js":
 /*!**************************!*\
   !*** ./js/consulting.js ***!
@@ -3279,11 +3362,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => /* binding */ contactInit
 /* harmony export */ });
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 /* harmony import */ var _functions_contactSubmit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../functions/contactSubmit */ "./functions/contactSubmit.js");
 /* harmony import */ var _animations_GoatRunningAnimation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./animations/GoatRunningAnimation */ "./js/animations/GoatRunningAnimation.js");
+/* harmony import */ var _animations_submitAnimations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animations/submitAnimations */ "./js/animations/submitAnimations.js");
 
  //importing the loading animations here
+
 
 
 function contactInit() {
@@ -3297,10 +3381,11 @@ function contactInit() {
   var contactCloseBtn = contactForm.querySelector('#contactFormClose');
   var midContactBtn = document.querySelector('.midContactBtn'); //establishes the timeline for the opening animation
 
-  var openFormAni = buildTimeline();
-  var submitHoverAni = buildSubmitHoverTL();
-  var closeHoverAni = buildCloseHoverTL();
-  var loadingAnimations = (0,_animations_GoatRunningAnimation__WEBPACK_IMPORTED_MODULE_1__.default)(); //establish event listeners to open/close form
+  var openFormAni = (0,_animations_submitAnimations__WEBPACK_IMPORTED_MODULE_2__.buildFormTimeline)();
+  var submitHoverAni = (0,_animations_submitAnimations__WEBPACK_IMPORTED_MODULE_2__.buildSubmitHoverTL)();
+  var closeHoverAni = (0,_animations_submitAnimations__WEBPACK_IMPORTED_MODULE_2__.buildCloseHoverTL)();
+  var loadingAnimations = (0,_animations_GoatRunningAnimation__WEBPACK_IMPORTED_MODULE_1__.default)();
+  var formSubmitcomplete = (0,_animations_submitAnimations__WEBPACK_IMPORTED_MODULE_2__.buildFormSubmitComplete)(); //establish event listeners to open/close form
 
   contactOpenBtn.addEventListener('click', function () {
     return toggleForm();
@@ -3337,7 +3422,7 @@ function contactInit() {
     var description = contactForm.querySelector('.contactDescription').value; //run the submit function
     //internally, it will update and run animations if successful
 
-    (0,_functions_contactSubmit__WEBPACK_IMPORTED_MODULE_0__.default)(firstName, lastName, email, description, toggleForm, loadingAnimations);
+    (0,_functions_contactSubmit__WEBPACK_IMPORTED_MODULE_0__.default)(firstName, lastName, email, description, toggleForm, loadingAnimations, formSubmitcomplete);
   }); //close button transitions
 
   contactCloseBtn.addEventListener('mouseenter', function () {
@@ -3355,58 +3440,7 @@ function contactInit() {
     }
 
     contactOpen = !contactOpen;
-  }; //builds the animation timeline to show the form
-
-
-  function buildTimeline() {
-    var tl = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.timeline({
-      paused: true
-    });
-    tl.add('start').fromTo(contactForm, {
-      y: '100%'
-    }, {
-      duration: 0.5,
-      y: '-50%'
-    }, 'start').fromTo(overlay, {
-      y: '-100vh'
-    }, {
-      y: 0,
-      duration: 0.01
-    }, 'start').fromTo(overlay, {
-      opacity: 0
-    }, {
-      duration: 0.5,
-      opacity: 0.5
-    }, 'start');
-    return tl;
-  } //controls the animation of the submit button ON HOVER
-
-
-  function buildSubmitHoverTL() {
-    var tl = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.timeline({
-      paused: true
-    });
-    tl.add('start').to(contactSubmitBtn, {
-      duration: 0.1,
-      scale: 1.1
-    }, 'start').to('#contactFormSubmit', {
-      duration: 0.1,
-      backgroundColor: '#ff4242',
-      color: '#ffffff'
-    }, 'start');
-    return tl;
-  }
-
-  function buildCloseHoverTL() {
-    var tl = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.timeline({
-      paused: true
-    });
-    tl.to(contactCloseBtn, {
-      duration: 0.1,
-      color: '#FF4242'
-    });
-    return tl;
-  }
+  };
 }
 
 /***/ }),

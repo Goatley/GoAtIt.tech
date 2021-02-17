@@ -79,13 +79,13 @@ export default function GoatLoadingAni() {
     submitClickTL
         .add('start')
         //first display the overlay
-        .fromTo('#ContactSubmitOverlay', {
-            x: '100vw',
-        }, {
-            x: 0,
-            opacity: 0.25,
-            duration: 0.01,
-        }, 'start')
+        // .fromTo('#ContactSubmitOverlay', {
+        //     x: '100vw',
+        // }, {
+        //     x: 0,
+        //     opacity: 0.25,
+        //     duration: 0.01,
+        // }, 'start')
         .fromTo('#LoadingGoatCont', {
             x: '100vw'
         },{
@@ -143,10 +143,10 @@ export default function GoatLoadingAni() {
             opacity: 0,
             duration: 0.25,
         }, 'start')
-        .to('#ContactSubmitOverlay', {
-            opacity: 0,
-            duration: 0.01
-        })
+        // .to('#ContactSubmitOverlay', {
+        //     opacity: 0,
+        //     duration: 0.01
+        // })
         
 
     function restartAll() {
@@ -162,7 +162,7 @@ export default function GoatLoadingAni() {
             scale: 1
         })
 
-        gsap.set(['#ContactSubmitOverlay', '#LoadingGoatCont'], {
+        gsap.set('#LoadingGoatCont', {
             x: '100vw',
             opacity: 1,
         })

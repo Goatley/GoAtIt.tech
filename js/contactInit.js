@@ -3,6 +3,7 @@ import submitForm from '../functions/contactSubmit';
 
 //importing the loading animations here
 import GoatLoadingAni from './animations/GoatRunningAnimation';
+import { buildFormTimeline, buildSubmitHoverTL, buildCloseHoverTL, buildFormSubmitComplete } from './animations/submitAnimations';
 
 export default function contactInit() {
     //state variable to determine if the contact form is open or not
@@ -17,10 +18,11 @@ export default function contactInit() {
     var midContactBtn = document.querySelector('.midContactBtn');
 
     //establishes the timeline for the opening animation
-    var openFormAni = buildTimeline();
+    var openFormAni = buildFormTimeline();
     var submitHoverAni = buildSubmitHoverTL();
     var closeHoverAni = buildCloseHoverTL();
     var loadingAnimations = GoatLoadingAni();
+    var formSubmitcomplete = buildFormSubmitComplete();
 
     //establish event listeners to open/close form
     contactOpenBtn.addEventListener('click', () => toggleForm());
@@ -56,7 +58,7 @@ export default function contactInit() {
 
         //run the submit function
         //internally, it will update and run animations if successful
-        submitForm(firstName, lastName, email, description, toggleForm, loadingAnimations);
+        submitForm(firstName, lastName, email, description, toggleForm, loadingAnimations, formSubmitcomplete);
 
     })
 
@@ -77,71 +79,5 @@ export default function contactInit() {
         }
 
         contactOpen = !contactOpen;        
-    }
-
-    //builds the animation timeline to show the form
-    function buildTimeline() {
-
-        var tl= gsap.timeline( { paused: true } );
-
-        tl
-            .add('start')
-            .fromTo(contactForm, {
-                y: '100%'
-            },
-            {
-                duration: 0.5,
-                y: '-50%',
-            }, 'start')
-            .fromTo(overlay, {
-                y: '-100vh',
-            }, 
-            {
-                y: 0,
-                duration: 0.01
-            },'start')
-            .fromTo(overlay, {
-                opacity: 0,
-            }, 
-            {
-                duration: 0.5,
-                opacity: 0.5,
-            }, 'start')
-
-        return tl;
-    }
-
-
-    //controls the animation of the submit button ON HOVER
-    function buildSubmitHoverTL() {
-        var tl = gsap.timeline({paused: true});
-
-        tl
-            .add('start')
-            .to(contactSubmitBtn, {
-                duration: 0.1,
-                scale: 1.1,
-            }, 'start')
-            .to('#contactFormSubmit', {
-                duration: 0.1,
-                backgroundColor: '#ff4242',
-                color: '#ffffff'
-            }, 'start')
-
-
-
-        return tl;
-    }
-
-    function buildCloseHoverTL() {
-        var tl = gsap.timeline({paused: true});
-
-        tl
-            .to(contactCloseBtn, {
-                duration: 0.1,
-                color: '#FF4242'
-            })
-
-        return tl;
     }
 }
