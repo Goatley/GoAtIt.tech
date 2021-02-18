@@ -32,6 +32,6 @@
     "axios": "^0.21.1",
     "gsap": "npm:@gsap/shockingly@^3.5.1",
     "http": "0.0.1-security",
-    "tailwindcss": "^1.9.6",
+    "tailwindcss": "^1.9.6"
   }
 }
