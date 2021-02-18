@@ -13,7 +13,6 @@
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
-    "autoprefixer": "^10.2.4",
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.0",
@@ -32,6 +31,7 @@
     "axios": "^0.21.1",
     "gsap": "npm:@gsap/shockingly@^3.5.1",
     "http": "0.0.1-security",
-    "tailwindcss": "^1.9.6"
+    "tailwindcss": "^1.9.6",
+    "autoprefixer": "^10.2.4"
   }
 }
