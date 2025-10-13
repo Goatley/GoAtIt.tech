@@ -12,6 +12,7 @@ import {
 
 // 2025 UPDATE - DISABLING CONTACT FORM ///// Too much spam :(
 export default function contactInit() {
+  //test comment
   //state variable to determine if the contact form is open or not
   //   var contactOpen = false;
   //   //establish dom elements for the contact form, overlay, and buttons
